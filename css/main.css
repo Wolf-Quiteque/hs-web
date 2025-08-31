@@ -13659,7 +13659,8 @@ START: Theme Slider CSS
 @media only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .tj-slider-section {
     border-radius: 14px;
-    margin: 0 12px 0;
+   margin: 0 0px 0 0px;
+
   }
 }
 
