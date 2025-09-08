@@ -8625,12 +8625,14 @@ START: Choose CSS
   line-height: 1;
   max-width: 88px;
   margin-bottom: 43px;
+  
 }
 .choose-box .choose-icon i {
   line-height: 1;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  margin-left: -20px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px) {
   .choose-box .choose-icon {
