@@ -21,14 +21,11 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <div class="body-overlay"></div>
+    <div class="body-overlay"></div>
 
 
-
-  <!-- back to top start -->
+  <!-- back to top -->
   <div id="tj-back-to-top"><span id="tj-back-to-top-percentage"></span></div>
-  <!-- back to top end -->
-
 
 
   <!-- start: Offcanvas Menu -->
@@ -149,7 +146,7 @@
           <div class="menu-area d-none d-lg-inline-flex align-items-center">
             <nav id="mobile-menu" class="mainmenu">
               <ul>
-  <li ><a href="sobrenos.html">Quem somos</a></li>
+  <li class="current-menu-item"><a href="sobrenos.html">Quem somos</a></li>
   <li class="has-dropdown">
     <a href="areas.html">Áreas de negócio</a>
     <ul class="sub-menu mega-menu-service">
@@ -163,8 +160,8 @@
     </ul>
   </li>
   <li><a href="carreiras.html">Carreiras</a></li>
-  <li ><a href="noticias.html">Notícias</a></li>
-    <li class="current-menu-item"><a href="responsiblidade.html">Responsabilidade Social</a></li>
+  <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="responsiblidade.html">Responsabilidade Social</a></li>
     <li><a href="contacto.html">Contacto</a></li>
 
   
@@ -203,7 +200,7 @@
             <div class="menu-area d-none d-lg-inline-flex align-items-center">
               <nav class="mainmenu">
             <ul>
-  <li ><a href="sobrenos.html">Quem somos</a></li>
+  <li class="current-menu-item"><a href="sobrenos.html">Quem somos</a></li>
   <li class="has-dropdown">
     <a href="areas.html">Áreas de negócio</a>
     <ul class="sub-menu mega-menu-service">
@@ -217,8 +214,8 @@
     </ul>
   </li>
   <li><a href="carreiras.html">Carreiras</a></li>
-  <li ><a href="noticias.html">Notícias</a></li>
-    <li class="current-menu-item"><a href="responsiblidade.html">Responsabilidade Social</a></li>
+  <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="responsiblidade.html">Responsabilidade Social</a></li>
     <li><a href="contacto.html">Contacto</a></li>
 
 
@@ -268,23 +265,27 @@
 
 
   </header>
+    <div id="smooth-wrapper"><div id="smooth-content">
   <main id="primary" class="site-main">
     <div class="space-for-header"></div>
 
     <!-- HERO - Inspiracional (semelhante ao de Carreiras) -->
     <section class="tj-page-header section-gap-x" data-bg-image="images/responsabilidade/DHS_3383.JPG">
       <div class="container">
-        <div class="row"><div class="col-12">
-          <div class="tj-page-header-content text-center">
-            <h1 class="tj-page-title">Construímos Obras. <br>Fortalecemos <span>Comunidades</span>.</h1>
-            <div class="d-flex gap-3 justify-content-center mt-3">
-              <a class="tj-primary-btn" href="#voluntariado">
-                <span class="btn-text"><span>Seja Voluntário(a)</span></span>
-                <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-              </a>
-            </div>
-          </div>
-        </div></div>
+     <!-- CORREÇÃO: Fechar as divs adequadamente -->
+<div class="row">
+  <div class="col-12">
+    <div class="tj-page-header-content text-center">
+      <h1 class="tj-page-title">Construímos Obras. <br>Fortalecemos <span>Comunidades</span>.</h1>
+      <div class="d-flex gap-3 justify-content-center mt-3">
+        <a class="tj-primary-btn" href="#voluntariado">
+          <span class="btn-text"><span>Seja Voluntário(a)</span></span>
+          <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
       <div class="page-header-overlay" data-bg-image="images/shape/pheader-overlay.webp"></div>
     </section>
@@ -595,7 +596,7 @@
         <div class="col-12">
           <div class="footer-subscribe wow fadeInUp" data-wow-delay=".3s">
             <div class="subscribe-logo">
-              <img  loading="lazy" src="images/logo2.webp" alt="Grupo H&S">
+              <img loading="lazy" src="images/logo2.webp" alt="Grupo H&S">
             </div>
             <div class="subscribe-form">
               <form action="#" method="post">
@@ -621,7 +622,7 @@
           <div class="footer-widget footer-col-1 wow fadeInUp" data-wow-delay=".1s">
             <div class="footer-logo">
               <a href="index.html">
-                <img  loading="lazy" src="images/logo2.webp" alt="Grupo H&S">
+                <img loading="lazy" src="images/logo2.webp" alt="Grupo H&S">
               </a>
             </div>
             <div class="footer-text">
@@ -629,10 +630,10 @@
             </div>
             <div class="award-logo-area">
               <div class="award-logo">
-                <img  loading="lazy" src="images/award-logo-white-1.webp" alt="Reconhecimento 1">
+                <img loading="lazy" src="images/award-logo-white-1.webp" alt="Reconhecimento 1">
               </div>
               <div class="award-logo">
-                <img  loading="lazy" src="images/award-logo-white-2.webp" alt="Reconhecimento 2">
+                <img loading="lazy" src="images/award-logo-white-2.webp" alt="Reconhecimento 2">
               </div>
             </div>
           </div>
@@ -727,7 +728,7 @@
   <div class="bg-shape-2"><img  loading="lazy" src="images/pattern-3.svg" alt=""></div>
 </footer>
 <!-- end: Footer Section -->
-
+</div></div>
   <!-- JS essencial -->
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
