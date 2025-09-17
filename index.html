@@ -31,6 +31,19 @@
   <link rel="stylesheet" href="css/odometer-theme-default.css">
   <link rel="stylesheet" href="css/meanmenu.css">
   <link rel="stylesheet" href="css/main.css">
+
+  <style>
+ 
+        
+        .about-img img {
+            transition: opacity 1.2s ease-in-out;
+        }
+        
+        .about-img img.active {
+            opacity: 1;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -351,7 +364,8 @@
       <div class="col-xl-6 col-lg-6 order-lg-1 order-2">
         <div class="about-img-area wow fadeInLeft" data-wow-delay=".2s">
           <div class="about-img overflow-hidden">
-            <img  loading="lazy" data-speed="0.8" src="images/about.jpg" alt="Grupo H&S - obras e empreendimentos" data-lag="0">
+            <img id="slideshow-image" loading="lazy" data-speed="0.8" src="images/main/hs1.jpg" alt="Grupo H&S - obras e empreendimentos" data-lag="0">
+            
           </div>
           <!-- <div class="box-area">
             <div class="experience-box wow fadeInUp" data-wow-delay=".3s">
@@ -450,7 +464,7 @@
               </div>
             </div>
             <div class="service-img">
-              <img  loading="lazy" src="images/obras1.webp" alt="Construção civil - Grupo H&S">
+              <img  loading="lazy" src="images/services/construcao.jpg" alt="Construção civil - Grupo H&S">
             </div>
           </div>
 
@@ -479,7 +493,7 @@
               </div>
             </div>
             <div class="service-img">
-              <img  loading="lazy" src="images/IMG-20250414-WA0246-960x650.jpg" alt="Imobiliário - Grupo H&S">
+              <img  loading="lazy" src="images/services/_DSC0204.JPG" alt="Imobiliário - Grupo H&S">
             </div>
           </div>
 
@@ -507,7 +521,7 @@
               </div>
             </div>
             <div class="service-img">
-              <img  loading="lazy" src="images/08112023-image1-equitymaster.webp" alt="Industrial - Grupo H&S">
+              <img  loading="lazy" src="images/services/canalizacao.jpg" alt="Industrial - Grupo H&S">
             </div>
           </div>
 
@@ -675,7 +689,7 @@
               </div>
               <span class="h9-service-nav"><i class="tji-arrow-right-long"></i></span>
             </div>
-            <div class="service-img"><img  loading="lazy" src="images/chegada.bmp" alt="2006 – Primeiras obras em Angola"></div>
+            <div class="service-img"><img  loading="lazy" src="images/timeline/P1010981.JPG" alt="2006 – Primeiras obras em Angola"></div>
           </div>
 
           <!-- 2007–2012 -->
@@ -690,7 +704,7 @@
               </div>
               <span class="h9-service-nav"><i class="tji-arrow-right-long"></i></span>
             </div>
-            <div class="service-img"><img  loading="lazy" src="images/samizanga.jpg" alt="Projetos habitacionais e infraestruturas em Angola"></div>
+            <div class="service-img"><img  loading="lazy" src="images/timeline/ggoogo.JPG" alt="Projetos habitacionais e infraestruturas em Angola"></div>
           </div>
 
           <!-- 2011 (marco específico) -->
@@ -1233,6 +1247,33 @@
 
     </div>
   </div>
+
+   <script>
+        // Image array with placeholder images
+        const images = [
+            "images/main/hs1.jpg",
+            "images/main/hs2.jpg",
+            "images/main/hs3.jpg"
+        ];
+        
+        // Get the image element
+        const imageElement = document.getElementById('slideshow-image');
+        
+        // Initialize index
+        let currentIndex = 0;
+        
+        // Function to change image
+        function changeImage() {
+            // Update the image source
+            imageElement.src = images[currentIndex];
+            
+            // Move to the next image, loop back to 0 if at the end
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+        
+        // Start the slideshow - change image every 2.5 seconds
+        setInterval(changeImage, 2500);
+    </script>
   <!-- JS here -->
   <script src="js/jquery.min.js" defer></script>
   <script src="js/bootstrap.bundle.min.js" defer></script>
