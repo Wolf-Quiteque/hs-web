@@ -33,14 +33,24 @@
   <link rel="stylesheet" href="css/main.css">
 
   <style>
- 
-        
+
+
         .about-img img {
             transition: opacity 1.2s ease-in-out;
         }
-        
+
         .about-img img.active {
             opacity: 1;
+        }
+
+        /* Hero video responsive adjustments for mobile horizontal view */
+        @media (max-width: 767px) {
+            .hero-video-container {
+                height: 50vh !important; /* Reduce height on mobile for more horizontal view */
+            }
+            .hero-video-container video {
+                object-fit: cover; /* Keep cover but adjust position if needed */
+            }
         }
 
     </style>
@@ -787,89 +797,7 @@
 <section class="h5-project">
   <div class="tj-scroll-slider section-gap">
     <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="sec-heading-wrap style-3">
-            <span class="sub-title wow fadeInUp" data-wow-delay=".3s">
-              <i class="tji-box"></i>Presença Internacional
-            </span>
-            <div class="heading-wrap-content">
-              <div class="sec-heading style-3">
-                <h2 class="sec-title text-anim">Além das fronteiras, reforçando a cooperação global.</h2>
-              </div>
-              <div class="btn-area wow fadeInUp" data-wow-delay=".8s">
-                <a class="tj-primary-btn" href="contacto.html">
-                  <span class="btn-text"><span>Contacte-nos</span></span>
-                  <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Slider -->
-      <div class="row">
-        <div class="col-12">
-          <div class="project-wrapper h5-project-wrapper">
-
-            <!-- China -->
-            <div class="h5-project-item-wrapper tj-scroll-slider-item">
-              <div class="project-item h4-project-item h5-project-item">
-                <div class="project-img">
-                  <img  loading="lazy" src="images/chinesecenter.jpg" alt="China — sede e operações centrais">
-                </div>
-                <div class="project-content">
-                  <span class="categories"><a href="#">China</a></span>
-                  <div class="project-text">
-                    <h3 class="title"><a href="#">Sede e operações centrais</a></h3>
-                  </div>
-                  <p class="desc">
-                    Base estratégica do Grupo H&S, onde se encontram as operações centrais, centros de inovação e suporte para todos os projectos internacionais.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Guiné -->
-            <div class="h5-project-item-wrapper tj-scroll-slider-item">
-              <div class="project-item h4-project-item h5-project-item">
-                <div class="project-img">
-                  <img  loading="lazy" src="images/guine.webp" alt="Guiné — projectos em expansão">
-                </div>
-                <div class="project-content">
-                  <span class="categories"><a href="#">Guiné</a></span>
-                  <div class="project-text">
-                    <h3 class="title"><a href="#">projectos em expansão</a></h3>
-                  </div>
-                  <p class="desc">
-                    Desenvolvimento de iniciativas habitacionais e infraestruturais, reforçando a presença do Grupo no mercado da África Ocidental.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Gana -->
-            <div class="h5-project-item-wrapper tj-scroll-slider-item">
-              <div class="project-item h4-project-item h5-project-item">
-                <div class="project-img">
-                  <img  loading="lazy" src="images/Emmanuel-obuobi-2-2-Emmanuel-Obuobi-1-scaled.webp" alt="Gana — investimentos estratégicos">
-                </div>
-                <div class="project-content">
-                  <span class="categories"><a href="#">Gana</a></span>
-                  <div class="project-text">
-                    <h3 class="title"><a href="#">Investimentos estratégicos</a></h3>
-                  </div>
-                  <p class="desc">
-                    Foco em imobiliário e infraestruturas, ampliando a atuação regional e fortalecendo o papel da H&S como referência em desenvolvimento urbano.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /.project-wrapper -->
-        </div>
-      </div>
     </div>
   </div>
 </section>
