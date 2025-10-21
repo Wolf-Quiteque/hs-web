@@ -309,84 +309,56 @@
               <div class="col-lg-8">
                 <div class="blog-post-wrapper">
 
-                  <!-- Notícia 1 -->
-                  <article class="blog-item wow fadeInUp" data-wow-delay=".1s">
-                    <div class="blog-thumb">
-                      <a href="noticia-detalhe.html"><img src="images/noticias/DSC00962.webp" alt="Shopping Popular"></a>
-                      <div class="blog-date">
-                        <span class="date">15</span>
-                        <span class="month">JAN</span>
-                      </div>
-                    </div>
-                    <div class="blog-content">
-                      <div class="blog-meta">
-                        <span class="categories"><a href="#">projectos</a></span>
-                        <span>Por <a href="#">H&S Angola</a></span>
-                      </div>
-                      <h3 class="title"><a href="noticia-detalhe.html">Shopping Popular: um novo polo de comércio e emprego em Luanda</a></h3>
-                      <p class="desc">A H&S avançou em mais uma etapa do Shopping Popular, um complexo pensado para dinamizar o comércio local, oferecer melhores condições aos vendedores e criar oportunidades de trabalho.</p>
-                      <a class="text-btn" href="noticia-detalhe.html">
-                        <span class="btn-text"><span>Ler Mais</span></span>
-                        <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                      </a>
-                    </div>
-                  </article>
+<!-- START: Dynamic News Area -->
+<div id="news-list" class="blog-post-wrapper"></div>
 
-                  <!-- Notícia 2 -->
-                  <article class="blog-item wow fadeInUp" data-wow-delay=".3s">
-                    <div class="blog-thumb">
-                      <a href="noticia-detalhe.html"><img src="images/noticias/IMG_5611.webp" alt="Vila Kuditemo"></a>
-                      <div class="blog-date">
-                        <span class="date">22</span>
-                        <span class="month">DEZ</span>
-                      </div>
-                    </div>
-                    <div class="blog-content">
-                      <div class="blog-meta">
-                        <span class="categories"><a href="#">Habitação</a></span>
-                        <span>Por <a href="#">H&S Angola</a></span>
-                      </div>
-                      <h3 class="title"><a href="noticia-detalhe.html">Vila Kuditemo: novas moradias entregues a mais de 200 famílias</a></h3>
-                      <p class="desc">O projecto habitacional da Vila Kuditemo reforça o compromisso da H&S com a qualidade de vida, infraestrutura de serviços, áreas verdes e integração comunitária.</p>
-                      <a class="text-btn" href="noticia-detalhe.html">
-                        <span class="btn-text"><span>Ler Mais</span></span>
-                        <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                      </a>
-                    </div>
-                  </article>
+<nav id="pagination" class="tj-pagination d-flex"></nav>
 
-                  <!-- Notícia 3 -->
-                  <article class="blog-item wow fadeInUp" data-wow-delay=".5s">
-                    <div class="blog-thumb">
-                      <a href="noticia-detalhe.html"><img src="images/noticias/DSC05931.webp" alt="Orlando Residencial"></a>
-                      <div class="blog-date">
-                        <span class="date">05</span>
-                        <span class="month">NOV</span>
-                      </div>
-                    </div>
-                    <div class="blog-content">
-                      <div class="blog-meta">
-                        <span class="categories"><a href="#">Condomínios</a></span>
-                        <span>Por <a href="#">H&S Angola</a></span>
-                      </div>
-                      <h3 class="title"><a href="noticia-detalhe.html">Orlando Residencial: padrão moderno, segurança e lazer</a></h3>
-                      <p class="desc">A primeira fase do Orlando Residencial foi inaugurada: urbanismo qualificado, segurança 24h, espaços de lazer e eficiência energética alinhada às melhores práticas.</p>
-                      <a class="text-btn" href="noticia-detalhe.html">
-                        <span class="btn-text"><span>Ler Mais</span></span>
-                        <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                      </a>
-                    </div>
-                  </article>
+<!-- Templates (stay on this page, not rendered directly) -->
+<template id="tpl-news-card">
+  <article class="blog-item wow fadeInUp" data-wow-delay=".1s">
+    <div class="blog-thumb">
+      <a data-bind="link" href="#"><img data-bind="cover" src="" alt=""></a>
+      <div class="blog-date">
+        <span class="date" data-bind="day">--</span>
+        <span class="month" data-bind="month">---</span>
+      </div>
+    </div>
+    <div class="blog-content">
+      <div class="blog-meta">
+        <span class="categories"><a href="#" data-bind="categories">Atualizações</a></span>
+        <span>Por <a href="#" data-bind="author">H&S Angola</a></span>
+      </div>
+      <h3 class="title">
+        <a data-bind="link" href="#"><span data-bind="title">Sem título</span></a>
+      </h3>
+      <p class="desc" data-bind="excerpt"></p>
+      <a class="text-btn" data-bind="link" href="#">
+        <span class="btn-text"><span>Ler Mais</span></span>
+        <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+      </a>
+    </div>
+  </article>
+</template>
 
-                  <!-- Paginação -->
-                  <div class="tj-pagination d-flex">
-                    <ul>
-                      <li><span aria-current="page" class="page-numbers current">1</span></li>
-                      <li><a class="page-numbers" href="#">2</a></li>
-                      <li><a class="page-numbers" href="#">3</a></li>
-                      <li><a class="next page-numbers" href="#"><i class="tji-arrow-right-long"></i></a></li>
-                    </ul>
-                  </div>
+<template id="tpl-recent-item">
+  <li>
+    <div class="post-thumb">
+      <a data-bind="link" href="#"><img data-bind="cover" src="" alt=""></a>
+    </div>
+    <div class="post-content">
+      <h6 class="post-title">
+        <a data-bind="link" href="#"><span data-bind="title"></span></a>
+      </h6>
+      <div class="blog-meta"><ul><li data-bind="date"></li></ul></div>
+    </div>
+  </li>
+</template>
+
+<template id="tpl-category-item">
+  <li><a href="#"></a></li>
+</template>
+<!-- END: Dynamic News Area -->
                 </div>
               </div>
 
@@ -400,57 +372,20 @@
                   <!-- Últimas Atualizações -->
                   <div class="tj-sidebar-widget tj-recent-posts wow fadeInUp" data-wow-delay=".3s">
                     <h4 class="widget-title">Últimas Atualizações</h4>
-                    <ul>
-                      <li>
-                        <div class="post-thumb"><a href="#"><img src="images/option1.jpg" alt="Parceria Angola–China"></a></div>
-                        <div class="post-content">
-                          <h6 class="post-title"><a href="#">H&S fortalece cooperação Angola–China</a></h6>
-                          <div class="blog-meta"><ul><li>10 JAN 2025</li></ul></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="post-thumb"><a href="#"><img src="images/noticias/jardim2.JPG" alt="Escola técnica"></a></div>
-                        <div class="post-content">
-                          <h6 class="post-title"><a href="#">Inauguração de Jaredim de Rosa em Luanda</a></h6>
-                          <div class="blog-meta"><ul><li>03 OUT 2024</li></ul></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="post-thumb"><a href="#"><img src="images/noticias/help.jpg" alt="Programa de estágios"></a></div>
-                        <div class="post-content">
-                          <h6 class="post-title"><a href="#">Projecto Nascer Livre Para Brilhar</a></h6>
-                          <div class="blog-meta"><ul><li>24 FEV 2024</li></ul></div>
-                        </div>
-                      </li>
-                    </ul>
+                    <ul id="recent-posts"></ul>
                   </div>
 
                   <!-- Categorias -->
                   <div class="tj-sidebar-widget widget-categories wow fadeInUp" data-wow-delay=".5s">
                     <h4 class="widget-title">Categorias</h4>
-                    <ul>
-                      <li><a href="#">Infraestruturas <span class="number">(05)</span></a></li>
-                      <li><a href="#">Habitação <span class="number">(03)</span></a></li>
-                      <li><a href="#">Educação <span class="number">(02)</span></a></li>
-                      <li><a href="#">Logística & Transporte <span class="number">(04)</span></a></li>
-                      <li><a href="#">Investimentos <span class="number">(03)</span></a></li>
-                    </ul>
+                    <ul id="categories-list"></ul>
                   </div>
 
                   <!-- Tags -->
                   <div class="tj-sidebar-widget widget-tag-cloud wow fadeInUp" data-wow-delay=".7s">
                     <h4 class="widget-title">Tags</h4>
                     <nav>
-                      <div class="tagcloud">
-                        <a href="#">Angola–China</a>
-                        <a href="#">Infraestrutura</a>
-                        <a href="#">Habitação</a>
-                        <a href="#">Condomínios</a>
-                        <a href="#">Emprego</a>
-                        <a href="#">Sustentabilidade</a>
-                        <a href="#">Comunidade</a>
-                        <a href="#">Investimento</a>
-                      </div>
+                      <div id="tags-cloud" class="tagcloud"></div>
                     </nav>
                   </div>
 
@@ -618,6 +553,12 @@
   <script src="js/appear.min.js"></script>
   <script src="js/wow.min.js"></script>
   <script src="js/meanmenu.js"></script>
+  <script>
+    // Point this to wherever you host the API (Step 2).
+    // For local dev:
+    window.NEWS_API_BASE = "http://localhost:4000/api";
+  </script>
+  <script src="js/news.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

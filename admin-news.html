@@ -1,0 +1,228 @@
+
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin - Notícias</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body { padding: 24px; }
+      .required::after { content: " *"; color: #d00; }
+      .table thead th { white-space: nowrap; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h4 m-0">Notícias (Admin)</h1>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">+ Nova Notícia</button>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Pesquisar</label>
+          <input id="search" type="search" class="form-control" placeholder="Título, autor...">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Categoria</label>
+          <input id="filterCategory" type="text" class="form-control" placeholder="ex: Habitação">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Tag</label>
+          <input id="filterTag" type="text" class="form-control" placeholder="ex: Emprego">
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button id="btnRefresh" class="btn btn-outline-secondary w-100">Atualizar</button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped align-middle" id="tbl">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Data</th>
+              <th>Autor</th>
+              <th>Categorias</th>
+              <th>Tags</th>
+              <th style="width:140px">Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="newsModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Nova Notícia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="frm">
+              <input type="hidden" id="id">
+              <div class="row g-3">
+                <div class="col-md-8">
+                  <label class="form-label required">Título</label>
+                  <input id="title" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Slug</label>
+                  <input id="slug" class="form-control" placeholder="auto se vazio">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label required">Data</label>
+                  <input id="date" type="datetime-local" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Autor</label>
+                  <input id="author" class="form-control" value="H&S Angola">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Capa (URL)</label>
+                  <input id="cover" class="form-control" placeholder="images/noticias/...">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Resumo</label>
+                  <textarea id="excerpt" class="form-control" rows="2"></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Categorias (vírgulas)</label>
+                  <input id="categories" class="form-control" placeholder="Infraestruturas, Habitação">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Tags (vírgulas)</label>
+                  <input id="tags" class="form-control" placeholder="Investimento, Emprego">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Conteúdo (HTML/Markdown)</label>
+                  <textarea id="content" class="form-control" rows="6"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button id="btnSave" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const API_BASE = (window.NEWS_API_BASE || "/api");
+      const ADMIN_KEY = (window.NEWS_ADMIN_KEY || "changeme");
+
+      const tblBody = document.querySelector("#tbl tbody");
+      const modal = new bootstrap.Modal(document.getElementById("newsModal"));
+      const el = id => document.getElementById(id);
+
+      function toCSV(str) {
+        return str.split(",").map(s=>s.trim()).filter(Boolean);
+      }
+
+      function fmtDate(d) {
+        try { return new Date(d).toLocaleString(); } catch { return d; }
+      }
+
+      async function list() {
+        const params = new URLSearchParams({
+          page: 1,
+          limit: 100,
+          q: el("search").value || ""
+        });
+        if (el("filterCategory").value) params.set("category", el("filterCategory").value);
+        if (el("filterTag").value) params.set("tag", el("filterTag").value);
+
+        const r = await fetch(`${API_BASE}/news?${params.toString()}`);
+        const js = await r.json();
+        renderTable(js.data || []);
+      }
+
+      function renderTable(rows) {
+        tblBody.innerHTML = "";
+        rows.forEach(r => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${r.title || ""}</td>
+            <td>${fmtDate(r.date)}</td>
+            <td>${r.author || ""}</td>
+            <td>${(r.categories||[]).join(", ")}</td>
+            <td>${(r.tags||[]).join(", ")}</td>
+            <td>
+              <div class="btn-group btn-group-sm">
+                <button class="btn btn-outline-primary" data-act="edit">Editar</button>
+                <button class="btn btn-outline-danger" data-act="del">Apagar</button>
+              </div>
+            </td>
+          `;
+          tr.querySelector("[data-act='edit']").addEventListener("click", () => openEdit(r));
+          tr.querySelector("[data-act='del']").addEventListener("click", () => removeItem(r));
+          tblBody.appendChild(tr);
+        });
+      }
+
+      function openEdit(r) {
+        document.querySelector(".modal-title").textContent = r ? "Editar Notícia" : "Nova Notícia";
+        el("id").value = r?.id || "";
+        el("title").value = r?.title || "";
+        el("slug").value = r?.slug || "";
+        el("date").value = r?.date ? r.date.substring(0,16) : "";
+        el("author").value = r?.author || "H&S Angola";
+        el("cover").value = r?.cover || "";
+        el("excerpt").value = r?.excerpt || "";
+        el("categories").value = (r?.categories || []).join(", ");
+        el("tags").value = (r?.tags || []).join(", ");
+        el("content").value = r?.content || "";
+        modal.show();
+      }
+
+      async function removeItem(r) {
+        if (!confirm(`Apagar "${r.title}"?`)) return;
+        await fetch(`${API_BASE}/news/${encodeURIComponent(r.id)}`, {
+          method: "DELETE",
+          headers: { "x-admin-key": ADMIN_KEY }
+        });
+        list();
+      }
+
+      document.getElementById("btnSave").addEventListener("click", async () => {
+        const body = {
+          title: el("title").value,
+          slug: el("slug").value || undefined,
+          date: el("date").value ? new Date(el("date").value).toISOString() : undefined,
+          author: el("author").value || undefined,
+          cover: el("cover").value || undefined,
+          excerpt: el("excerpt").value || undefined,
+          categories: toCSV(el("categories").value),
+          tags: toCSV(el("tags").value),
+          content: el("content").value || undefined
+        };
+        const id = el("id").value;
+        const method = id ? "PUT" : "POST";
+        const url = id ? `${API_BASE}/news/${encodeURIComponent(id)}` : `${API_BASE}/news`;
+        await fetch(url, {
+          method,
+          headers: {
+            "Content-Type": "application/json",
+            "x-admin-key": ADMIN_KEY
+          },
+          body: JSON.stringify(body)
+        });
+        modal.hide();
+        list();
+      });
+
+      document.getElementById("btnRefresh").addEventListener("click", list);
+      document.getElementById("search").addEventListener("keydown", (e)=>{ if (e.key === "Enter") list(); });
+
+      // init
+      list();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
