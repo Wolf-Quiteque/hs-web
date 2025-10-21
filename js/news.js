@@ -51,7 +51,8 @@
     // Title/Excerpt/Link
     const title = el.querySelector("[data-bind='title']");
     if (title) { title.textContent = item.title || "Sem título"; }
-    $$("a[data-bind='link'], h3 a", el).forEach(a => a.href = link);
+    // Commented out to make non-clickable
+    // $$("a[data-bind='link'], h3 a", el).forEach(a => a.href = link);
 
     const desc = el.querySelector("[data-bind='excerpt']");
     if (desc) { desc.textContent = item.excerpt || ""; }
@@ -69,7 +70,8 @@
 
     const img = el.querySelector("[data-bind='cover']"); if (img) img.src = item.cover || "images/noticias/placeholder.webp";
     const title = el.querySelector("[data-bind='title']"); if (title) title.textContent = item.title || "";
-    const linkEls = el.querySelectorAll("a[data-bind='link']"); linkEls.forEach(a => a.href = link);
+    // Commented out to make non-clickable
+    // const linkEls = el.querySelectorAll("a[data-bind='link']"); linkEls.forEach(a => a.href = link);
     const dateEl = el.querySelector("[data-bind='date']"); if (dateEl) dateEl.textContent = dateStr;
 
     return el;

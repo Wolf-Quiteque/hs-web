@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt">
   <head>
@@ -72,14 +71,11 @@
           <div class="modal-body">
             <form id="frm">
               <input type="hidden" id="id">
+              <input type="hidden" id="slug" value="">
               <div class="row g-3">
                 <div class="col-md-8">
                   <label class="form-label required">Título</label>
                   <input id="title" class="form-control" required>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label">Slug</label>
-                  <input id="slug" class="form-control" placeholder="auto se vazio">
                 </div>
                 <div class="col-md-4">
                   <label class="form-label required">Data</label>
@@ -130,9 +126,12 @@
               </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button id="btnSave" class="btn btn-primary">Guardar</button>
+          <div class="modal-footer flex-column align-items-stretch">
+            <div class="d-flex w-100 justify-content-between">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button id="btnSave" class="btn btn-primary">Guardar</button>
+            </div>
+            <div id="saveStatus" class="small text-muted mt-2"></div>
           </div>
         </div>
       </div>
@@ -140,12 +139,48 @@
 
     <script>
       // Configure these if hosting elsewhere:
-      const API_BASE = (window.NEWS_API_BASE || "http://localhost:4000/api");
+      const API_BASE = (window.NEWS_API_BASE || "https://hs-node-api.vercel.app/api");
       const ADMIN_KEY = (window.NEWS_ADMIN_KEY || "supersecret");
 
       const tblBody = document.querySelector("#tbl tbody");
-      const modal = new bootstrap.Modal(document.getElementById("newsModal"));
+      let modal;
       const el = id => document.getElementById(id);
+
+      function toSlug(str){
+        return String(str || 'noticia')
+          .toLowerCase()
+          .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+          .replace(/[^a-z0-9]+/g,'-')
+          .replace(/(^-|-$)/g,'')
+          .slice(0,80);
+      }
+
+      function showStep(msg) {
+        const s = el("saveStatus");
+        if (s) s.textContent = msg || "";
+      }
+
+      function setSaving(isSaving) {
+        const btn = el("btnSave");
+        const closeBtn = document.querySelector("#newsModal .btn-close");
+        const uploadBtn = document.getElementById("btnUpload");
+        [btn, closeBtn, uploadBtn].forEach(b => { if (b) b.disabled = !!isSaving; });
+        if (btn) btn.classList.toggle("disabled", !!isSaving);
+      }
+
+      function resetForm() {
+        ["id","title","slug","date","author","cover","excerpt","categories","tags","content"]
+          .forEach(id => { if (el(id)) el(id).value = (id === "author" ? "H&S Angola" : ""); });
+        if (el("coverFile")) el("coverFile").value = "";
+        if (el("preview")) { el("preview").src = ""; el("preview").classList.add("d-none"); }
+        if (el("coverStatus")) el("coverStatus").textContent = "";
+        showStep("");
+        lastWebpDataUrl = null;
+        lastWebpFileName = null;
+      }
+
+      let lastWebpDataUrl = null;
+      let lastWebpFileName = null;
 
       function toCSV(str) {
         return (str||"").split(",").map(s=>s.trim()).filter(Boolean);
@@ -217,98 +252,145 @@
       }
 
       // -------- WEBP conversion (client) --------
-      async function fileToWebpDataUrl(file, quality = 0.95) {
-        // Read file as bitmap
-        let imgBitmap;
+      async function fileToWebpDataUrl(file, opts = 0.95) {
+        const quality = typeof opts === 'number' ? opts : (opts.quality ?? 0.9);
+        const maxW    = typeof opts === 'number' ? Infinity : (opts.maxW ?? Infinity);
+        const maxH    = typeof opts === 'number' ? Infinity : (opts.maxH ?? Infinity);
+
+        // Create bitmap (handles EXIF rotation in most browsers)
+        let bmp;
         try {
-          imgBitmap = await createImageBitmap(file);
+          bmp = await createImageBitmap(file);
         } catch {
-          // Fallback for older browsers
-          const dataUrl = await new Promise((resolve, reject) => {
-            const fr = new FileReader();
-            fr.onload = () => resolve(fr.result);
-            fr.onerror = reject;
-            fr.readAsDataURL(file);
+          // Fallback
+          const srcDataUrl = await new Promise((res, rej) => {
+            const fr = new FileReader(); fr.onload = () => res(fr.result); fr.onerror = rej; fr.readAsDataURL(file);
           });
-          const img = await new Promise((resolve, reject) => {
-            const im = new Image();
-            im.onload = () => resolve(im);
-            im.onerror = reject;
-            im.src = dataUrl;
+          const img = await new Promise((res, rej) => {
+            const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = srcDataUrl;
           });
-          const canvas = document.createElement("canvas");
-          canvas.width = img.width;
-          canvas.height = img.height;
-          const ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0);
-          return await new Promise((resolve) => canvas.toBlob(b => resolve(URL.createObjectURL(b)), "image/webp", quality));
+          bmp = { width: img.width, height: img.height, _img: img };
         }
 
+        // Compute resize (keep aspect ratio)
+        const sw = bmp.width, sh = bmp.height;
+        const scale = Math.min(1, (isFinite(maxW) ? maxW / sw : 1), (isFinite(maxH) ? maxH / sh : 1));
+        const tw = Math.max(1, Math.round(sw * scale));
+        const th = Math.max(1, Math.round(sh * scale));
+
         const canvas = document.createElement('canvas');
-        canvas.width = imgBitmap.width;
-        canvas.height = imgBitmap.height;
+        canvas.width = tw; canvas.height = th;
         const ctx = canvas.getContext('2d');
-        ctx.drawImage(imgBitmap, 0, 0);
+
+        // Draw source → canvas
+        if (bmp._img) ctx.drawImage(bmp._img, 0, 0, tw, th);
+        else ctx.drawImage(bmp, 0, 0, tw, th);
+
+        // Encode to WEBP data URL
         const dataUrl = await new Promise((resolve) => canvas.toBlob(blob => {
-          const fr = new FileReader();
-          fr.onload = () => resolve(fr.result);
+          const fr = new FileReader(); fr.onload = () => resolve(fr.result);
           fr.readAsDataURL(blob);
         }, 'image/webp', quality));
+
         return dataUrl;
       }
 
       async function handleUpload() {
-        const file = el("coverFile").files?.[0];
-        if (!file) { alert("Selecione um ficheiro primeiro."); return; }
+        let dataUrlToSend = lastWebpDataUrl;
+        let filenameToSend = lastWebpFileName;
 
-        // Convert to WEBP (quality ~ visually lossless for fotos)
-        el("coverStatus").textContent = "A converter para WEBP...";
-        const webpDataUrl = await fileToWebpDataUrl(file, 0.95);
-        el("preview").src = webpDataUrl;
-        el("preview").classList.remove("d-none");
+        // If user didn't trigger change (edge case), convert on demand
+        if (!dataUrlToSend) {
+          const file = el("coverFile").files?.[0];
+          if (!file) { alert("Selecione um ficheiro primeiro."); return; }
+          el("coverStatus").textContent = "A converter para WEBP...";
+          dataUrlToSend = await fileToWebpDataUrl(file, 0.95);
+          filenameToSend = file.name.replace(/\.[^.]+$/, '') + ".webp";
+
+          // Also show preview
+          el("preview").src = dataUrlToSend;
+          el("preview").classList.remove("d-none");
+        }
 
         // Send to API
         el("coverStatus").textContent = "A enviar para o armazenamento...";
         const r = await fetch(`${API_BASE}/upload`, {
           method: "POST",
           headers: { "Content-Type": "application/json", "x-admin-key": ADMIN_KEY },
-          body: JSON.stringify({ dataUrl: webpDataUrl, filename: file.name.replace(/\.[^.]+$/, '') + ".webp" })
+          body: JSON.stringify({ dataUrl: dataUrlToSend, filename: filenameToSend })
         });
         const js = await r.json();
         if (!r.ok) {
           el("coverStatus").textContent = `Erro no upload: ${js.error || r.status}`;
           return;
         }
+
         el("cover").value = js.url;
         el("coverStatus").innerHTML = `OK: <a href="${js.url}" target="_blank">${js.url}</a>`;
       }
 
-      // Save (create/update)
+      // Guardar: convert → upload → save
       document.getElementById("btnSave").addEventListener("click", async () => {
-        const body = {
-          title: el("title").value,
-          slug: el("slug").value || undefined,
-          date: el("date").value ? new Date(el("date").value).toISOString() : undefined,
-          author: el("author").value || undefined,
-          cover: el("cover").value || undefined,
-          excerpt: el("excerpt").value || undefined,
-          categories: toCSV(el("categories").value),
-          tags: toCSV(el("tags").value),
-          content: el("content").value || undefined
-        };
-        const id = el("id").value;
-        const method = id ? "PUT" : "POST";
-        const url = id ? `${API_BASE}/news/${encodeURIComponent(id)}` : `${API_BASE}/news`;
-        await fetch(url, {
-          method,
-          headers: {
-            "Content-Type": "application/json",
-            "x-admin-key": ADMIN_KEY
-          },
-          body: JSON.stringify(body)
-        });
-        modal.hide();
-        list();
+        try {
+          setSaving(true);
+          showStep("A preparar...");
+
+          // If a file is selected, convert & upload automatically
+          const file = el("coverFile").files?.[0];
+          if (file) {
+            showStep("A converter imagem para WEBP...");
+            const webp = lastWebpDataUrl || await fileToWebpDataUrl(file, { maxW: 1600, quality: 0.85 });
+            lastWebpDataUrl = webp;
+            lastWebpFileName = file.name.replace(/\.[^.]+$/, '') + ".webp";
+
+            showStep("A enviar imagem...");
+            const r = await fetch(`${API_BASE}/upload`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "x-admin-key": ADMIN_KEY },
+              body: JSON.stringify({ dataUrl: webp, filename: lastWebpFileName })
+            });
+            const js = await r.json();
+            if (!r.ok) throw new Error(js.error || "Falha no upload");
+            el("cover").value = js.url; // use uploaded WEBP
+          }
+
+          // Build payload
+          showStep("A guardar...");
+          const body = {
+            title: el("title").value,
+            slug: el("slug").value || undefined, // leave blank to auto
+            date: el("date").value ? new Date(el("date").value).toISOString() : undefined,
+            author: el("author").value || undefined,
+            cover: el("cover").value || undefined,
+            excerpt: el("excerpt").value || undefined,
+            categories: toCSV(el("categories").value),
+            tags: toCSV(el("tags").value),
+            content: el("content").value || undefined
+          };
+          const id = el("id").value;
+          const method = id ? "PUT" : "POST";
+          const url = id ? `${API_BASE}/news/${encodeURIComponent(id)}` : `${API_BASE}/news`;
+
+          const saveRes = await fetch(url, {
+            method,
+            headers: { "Content-Type": "application/json", "x-admin-key": ADMIN_KEY },
+            body: JSON.stringify(body)
+          });
+          if (!saveRes.ok) {
+            const js = await saveRes.json().catch(()=> ({}));
+            throw new Error(js.error || `Erro ${saveRes.status}`);
+          }
+
+          showStep("Feito.");
+          // Clean UI and close
+          resetForm();
+          modal.hide();
+          await list();
+        } catch (err) {
+          showStep(`Erro: ${err.message || err}`);
+        } finally {
+          setSaving(false);
+        }
       });
 
       document.getElementById("btnRefresh").addEventListener("click", list);
@@ -320,6 +402,54 @@
           el("cover").value = text;
           el("coverStatus").textContent = "URL colada.";
         } catch { el("coverStatus").textContent = "Não foi possível ler da área de transferência."; }
+      });
+
+      // Preview as soon as a file is selected (and pre-convert to WEBP once)
+      el("coverFile").addEventListener("change", async (e) => {
+        console.log("File selected event triggered");
+        const file = e.target.files?.[0];
+        if (!file) {
+          console.log("No file selected");
+          el("preview").classList.add("d-none");
+          el("preview").src = "";
+          el("coverStatus").textContent = "";
+          lastWebpDataUrl = null;
+          lastWebpFileName = null;
+          return;
+        }
+
+        console.log("File selected:", file.name);
+        el("coverStatus").textContent = "A preparar pré-visualização...";
+        try {
+          // Pre-convert once so clicking "Converter & Enviar" is instant
+          lastWebpDataUrl = await fileToWebpDataUrl(file, 0.95);
+          lastWebpFileName = file.name.replace(/\.[^.]+$/, '') + ".webp";
+
+          // Show preview now (already WEBP)
+          el("preview").src = lastWebpDataUrl;
+          el("preview").classList.remove("d-none");
+          el("coverStatus").textContent = "Pronto para enviar.";
+          console.log("Preview set to:", lastWebpDataUrl.substring(0, 50) + "...");
+          // Add onload listener to confirm image loads
+          el("preview").onload = () => console.log("Preview image loaded successfully");
+          el("preview").onerror = () => console.error("Preview image failed to load");
+        } catch (err) {
+          console.error("Error during preview prep:", err);
+          el("coverStatus").textContent = "Erro ao preparar pré-visualização.";
+        }
+      });
+
+      // Auto-set slug from title
+      el("title").addEventListener("input", () => {
+        if (!el("slug")) return;
+        el("slug").value = toSlug(el("title").value);
+      });
+
+      // Init modal after page load
+      window.addEventListener('load', () => {
+        modal = new bootstrap.Modal(el("newsModal"));
+        // Hide manual upload button (now auto in save)
+        document.getElementById("btnUpload")?.classList.add("d-none");
       });
 
       // init
