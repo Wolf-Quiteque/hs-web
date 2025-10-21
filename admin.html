@@ -10,6 +10,8 @@
       body { padding: 24px; }
       .required::after { content: " *"; color: #d00; }
       .table thead th { white-space: nowrap; }
+      .thumb-preview { max-height: 80px; border-radius: 8px; }
+      .small-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; }
     </style>
   </head>
   <body>
@@ -17,6 +19,10 @@
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h4 m-0">Notícias (Admin)</h1>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">+ Nova Notícia</button>
+      </div>
+
+      <div class="alert alert-info">
+        <div><strong>Dica:</strong> As imagens são convertidas para <code>.webp</code> no navegador antes do envio para reduzir tamanho sem perder qualidade perceptível.</div>
       </div>
 
       <div class="row g-3 mb-3">
@@ -41,12 +47,13 @@
         <table class="table table-striped align-middle" id="tbl">
           <thead>
             <tr>
+              <th style="width:90px">Capa</th>
               <th>Título</th>
               <th>Data</th>
               <th>Autor</th>
               <th>Categorias</th>
               <th>Tags</th>
-              <th style="width:140px">Ações</th>
+              <th style="width:160px">Ações</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -84,8 +91,26 @@
                 </div>
                 <div class="col-md-4">
                   <label class="form-label">Capa (URL)</label>
-                  <input id="cover" class="form-control" placeholder="images/noticias/...">
+                  <div class="input-group">
+                    <input id="cover" class="form-control" placeholder="https://.../cover.webp">
+                    <button class="btn btn-outline-secondary" type="button" id="btnPaste">Colar</button>
+                  </div>
+                  <div class="form-text small-mono" id="coverStatus"></div>
                 </div>
+
+                <div class="col-md-8">
+                  <label class="form-label">Carregar imagem (qualquer formato)</label>
+                  <input id="coverFile" type="file" accept="image/*" class="form-control">
+                  <div class="form-text">Será convertida para <code>.webp</code> antes de enviar.</div>
+                </div>
+                <div class="col-md-4 d-flex align-items-center">
+                  <img id="preview" class="thumb-preview ms-auto d-none" alt="preview">
+                </div>
+
+                <div class="col-12">
+                  <button id="btnUpload" type="button" class="btn btn-sm btn-outline-primary">Converter & Enviar</button>
+                </div>
+
                 <div class="col-12">
                   <label class="form-label">Resumo</label>
                   <textarea id="excerpt" class="form-control" rows="2"></textarea>
@@ -114,7 +139,8 @@
     </div>
 
     <script>
-      const API_BASE = (window.NEWS_API_BASE || "/api");
+      // Configure these if hosting elsewhere:
+      const API_BASE = (window.NEWS_API_BASE || "http://localhost:4000/api");
       const ADMIN_KEY = (window.NEWS_ADMIN_KEY || "changeme");
 
       const tblBody = document.querySelector("#tbl tbody");
@@ -122,19 +148,14 @@
       const el = id => document.getElementById(id);
 
       function toCSV(str) {
-        return str.split(",").map(s=>s.trim()).filter(Boolean);
+        return (str||"").split(",").map(s=>s.trim()).filter(Boolean);
       }
-
       function fmtDate(d) {
         try { return new Date(d).toLocaleString(); } catch { return d; }
       }
 
       async function list() {
-        const params = new URLSearchParams({
-          page: 1,
-          limit: 100,
-          q: el("search").value || ""
-        });
+        const params = new URLSearchParams({ page: 1, limit: 100, q: el("search").value || "" });
         if (el("filterCategory").value) params.set("category", el("filterCategory").value);
         if (el("filterTag").value) params.set("tag", el("filterTag").value);
 
@@ -148,6 +169,7 @@
         rows.forEach(r => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
+            <td>${r.cover ? `<img src="${r.cover}" class="thumb-preview">` : "-"}</td>
             <td>${r.title || ""}</td>
             <td>${fmtDate(r.date)}</td>
             <td>${r.author || ""}</td>
@@ -168,28 +190,100 @@
 
       function openEdit(r) {
         document.querySelector(".modal-title").textContent = r ? "Editar Notícia" : "Nova Notícia";
-        el("id").value = r?.id || "";
+        el("id").value = r?._id || r?.id || "";
         el("title").value = r?.title || "";
         el("slug").value = r?.slug || "";
-        el("date").value = r?.date ? r.date.substring(0,16) : "";
+        el("date").value = r?.date ? new Date(r.date).toISOString().slice(0,16) : "";
         el("author").value = r?.author || "H&S Angola";
         el("cover").value = r?.cover || "";
         el("excerpt").value = r?.excerpt || "";
         el("categories").value = (r?.categories || []).join(", ");
         el("tags").value = (r?.tags || []).join(", ");
         el("content").value = r?.content || "";
+        el("preview").src = r?.cover || "";
+        el("preview").classList.toggle("d-none", !r?.cover);
+        el("coverStatus").textContent = "";
+        el("coverFile").value = "";
         modal.show();
       }
 
       async function removeItem(r) {
         if (!confirm(`Apagar "${r.title}"?`)) return;
-        await fetch(`${API_BASE}/news/${encodeURIComponent(r.id)}`, {
+        await fetch(`${API_BASE}/news/${encodeURIComponent(r._id || r.id)}`, {
           method: "DELETE",
           headers: { "x-admin-key": ADMIN_KEY }
         });
         list();
       }
 
+      // -------- WEBP conversion (client) --------
+      async function fileToWebpDataUrl(file, quality = 0.95) {
+        // Read file as bitmap
+        let imgBitmap;
+        try {
+          imgBitmap = await createImageBitmap(file);
+        } catch {
+          // Fallback for older browsers
+          const dataUrl = await new Promise((resolve, reject) => {
+            const fr = new FileReader();
+            fr.onload = () => resolve(fr.result);
+            fr.onerror = reject;
+            fr.readAsDataURL(file);
+          });
+          const img = await new Promise((resolve, reject) => {
+            const im = new Image();
+            im.onload = () => resolve(im);
+            im.onerror = reject;
+            im.src = dataUrl;
+          });
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          return await new Promise((resolve) => canvas.toBlob(b => resolve(URL.createObjectURL(b)), "image/webp", quality));
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = imgBitmap.width;
+        canvas.height = imgBitmap.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(imgBitmap, 0, 0);
+        const dataUrl = await new Promise((resolve) => canvas.toBlob(blob => {
+          const fr = new FileReader();
+          fr.onload = () => resolve(fr.result);
+          fr.readAsDataURL(blob);
+        }, 'image/webp', quality));
+        return dataUrl;
+      }
+
+      async function handleUpload() {
+        const file = el("coverFile").files?.[0];
+        if (!file) { alert("Selecione um ficheiro primeiro."); return; }
+
+        // Convert to WEBP (quality ~ visually lossless for fotos)
+        el("coverStatus").textContent = "A converter para WEBP...";
+        const webpDataUrl = await fileToWebpDataUrl(file, 0.95);
+        el("preview").src = webpDataUrl;
+        el("preview").classList.remove("d-none");
+
+        // Send to API
+        el("coverStatus").textContent = "A enviar para o armazenamento...";
+        const r = await fetch(`${API_BASE}/upload`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "x-admin-key": ADMIN_KEY },
+          body: JSON.stringify({ dataUrl: webpDataUrl, filename: file.name.replace(/\.[^.]+$/, '') + ".webp" })
+        });
+        const js = await r.json();
+        if (!r.ok) {
+          el("coverStatus").textContent = `Erro no upload: ${js.error || r.status}`;
+          return;
+        }
+        el("cover").value = js.url;
+        el("coverStatus").innerHTML = `OK: <a href="${js.url}" target="_blank">${js.url}</a>`;
+      }
+
+      // Save (create/update)
       document.getElementById("btnSave").addEventListener("click", async () => {
         const body = {
           title: el("title").value,
@@ -219,6 +313,14 @@
 
       document.getElementById("btnRefresh").addEventListener("click", list);
       document.getElementById("search").addEventListener("keydown", (e)=>{ if (e.key === "Enter") list(); });
+      document.getElementById("btnUpload").addEventListener("click", handleUpload);
+      document.getElementById("btnPaste").addEventListener("click", async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          el("cover").value = text;
+          el("coverStatus").textContent = "URL colada.";
+        } catch { el("coverStatus").textContent = "Não foi possível ler da área de transferência."; }
+      });
 
       // init
       list();
