@@ -310,9 +310,13 @@
                 <div class="blog-post-wrapper">
 
 <!-- START: Dynamic News Area -->
-<div id="news-list" class="blog-post-wrapper"></div>
+<div id="news-loader" class="text-center py-4">
+<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div> <br>
+<strong>A carregar notícias...</strong>
+</div>
+<div id="news-list" class="blog-post-wrapper" style="display:none;"></div>
 
-<nav id="pagination" class="tj-pagination d-flex"></nav>
+<nav id="pagination" class="tj-pagination d-flex" style="display:none;"></nav>
 
 <!-- Templates (stay on this page, not rendered directly) -->
 <template id="tpl-news-card">

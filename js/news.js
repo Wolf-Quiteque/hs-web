@@ -182,6 +182,13 @@
   function clear(el) { if (el) el.innerHTML = ""; }
 
   async function loadAndRender() {
+    const loaderEl = document.getElementById("news-loader");
+    const newsEl = document.getElementById("news-list");
+    const paginEl = document.getElementById("pagination");
+    if (loaderEl) loaderEl.style.display = "block";
+    if (newsEl) newsEl.style.display = "none";
+    if (paginEl) paginEl.style.display = "none";
+
     // main list
     try {
       const { data, pagination } = await loadNews();
@@ -191,8 +198,18 @@
         data.forEach(item => listRoot.appendChild(renderNewsCard(item)));
       }
       if (pagination) renderPagination(pagination);
+      if (loaderEl) loaderEl.style.display = "none";
+      if (newsEl) newsEl.style.display = "block";
+      if (paginEl) paginEl.style.display = "flex";
     } catch (e) {
       console.error(e);
+      const listRoot = document.getElementById("news-list");
+      if (listRoot) {
+        clear(listRoot);
+        listRoot.innerHTML = "<p class='text-center py-4'>Erro ao carregar notícias. Tente novamente mais tarde.</p>";
+      }
+      if (loaderEl) loaderEl.style.display = "none";
+      if (newsEl) newsEl.style.display = "block";
     }
 
     // recent

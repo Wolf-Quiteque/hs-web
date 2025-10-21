@@ -13,8 +13,26 @@
       .small-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; }
     </style>
   </head>
-  <body>
-    <div class="container">
+<body>
+    <div class="modal fade" id="authModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Autenticação Administrador</h5>
+          </div>
+          <div class="modal-body">
+            <label for="passcode">Introduza a palavra-passe:</label>
+            <input type="password" id="passcode" class="form-control">
+          </div>
+          <div class="modal-footer">
+            <button id="btnAuth" class="btn btn-primary">Entrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="adminContent" style="display:none;">
+      <div class="container">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h4 m-0">Notícias (Admin)</h1>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">+ Nova Notícia</button>
@@ -58,7 +76,8 @@
           <tbody></tbody>
         </table>
       </div>
-    </div>
+    </div> <!-- container -->
+    </div> <!-- adminContent -->
 
     <!-- Modal -->
     <div class="modal fade" id="newsModal" tabindex="-1">
@@ -445,8 +464,27 @@
         el("slug").value = toSlug(el("title").value);
       });
 
-      // Init modal after page load
+      // Passcode protection
+      const passcodeCorrect = "hsluanda2025";
       window.addEventListener('load', () => {
+        // Auth modal
+        const authModal = new bootstrap.Modal(document.getElementById('authModal'), { backdrop: 'static', keyboard: false });
+        authModal.show();
+        document.getElementById('btnAuth').addEventListener('click', () => {
+          const pass = document.getElementById('passcode').value;
+          if (pass === passcodeCorrect) {
+            authModal.hide();
+            document.getElementById('adminContent').style.display = 'block';
+          } else {
+            alert('Palavra-passe incorreta!');
+          }
+        });
+        document.getElementById('passcode').addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            document.getElementById('btnAuth').click();
+          }
+        });
+
         modal = new bootstrap.Modal(el("newsModal"));
         // Hide manual upload button (now auto in save)
         document.getElementById("btnUpload")?.classList.add("d-none");
