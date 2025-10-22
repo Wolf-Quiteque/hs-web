@@ -27956,4 +27956,52 @@ START: Blog CSS
   font-size: 20px;
 }
 
+
+ /* Language Switcher Styles */
+        .language-switcher {
+            display: flex;
+            gap: 5px;
+            margin-right: 20px;
+        }
+
+        .lang-switcher-btn {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .lang-switcher-btn:hover {
+            background: #fff;
+            color: #333;
+        }
+
+        .lang-switcher-btn.active {
+            background: #fff;
+            color: #333;
+        }
+
+        /* Dark theme for sticky header */
+        .header-sticky .lang-switcher-btn {
+            border-color: #333;
+            color: #333;
+        }
+
+        .header-sticky .lang-switcher-btn:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        .header-sticky .lang-switcher-btn.active {
+            background: #333;
+            color: #fff;
+        }
+
 /* !END: Blog CSS *//*# sourceMappingURL=main.css.map */

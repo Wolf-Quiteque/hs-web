@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="pt">
+<html class="no-js" lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -11,19 +11,68 @@
   <title>H&S - Industrial</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="images/fav1.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../images/fav1.png">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/font-awesome-pro.min.css">
-  <link rel="stylesheet" href="css/animate.min.css">
-  <link rel="stylesheet" href="css/bexon-icons.css">
-  <link rel="stylesheet" href="css/nice-select.css">
-  <link rel="stylesheet" href="css/swiper.min.css">
-  <link rel="stylesheet" href="css/venobox.min.css">
-  <link rel="stylesheet" href="css/odometer-theme-default.css">
-  <link rel="stylesheet" href="css/meanmenu.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/font-awesome-pro.min.css">
+  <link rel="stylesheet" href="../css/animate.min.css">
+  <link rel="stylesheet" href="../css/bexon-icons.css">
+  <link rel="stylesheet" href="../css/nice-select.css">
+  <link rel="stylesheet" href="../css/swiper.min.css">
+  <link rel="stylesheet" href="../css/venobox.min.css">
+  <link rel="stylesheet" href="../css/odometer-theme-default.css">
+  <link rel="stylesheet" href="../css/meanmenu.css">
+  <link rel="stylesheet" href="../css/main.css">
+
+  <style>
+    /* Language Switcher Styles */
+    .language-switcher {
+        display: flex;
+        gap: 5px;
+        margin-right: 20px;
+    }
+
+    .lang-switcher-btn {
+        background: transparent;
+        border: 2px solid #fff;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .lang-switcher-btn:hover {
+        background: #fff;
+        color: #333;
+    }
+
+    .lang-switcher-btn.active {
+        background: #fff;
+        color: #333;
+    }
+
+    /* Dark theme for sticky header */
+    .header-sticky .lang-switcher-btn {
+        border-color: #333;
+        color: #333;
+    }
+
+    .header-sticky .lang-switcher-btn:hover {
+        background: #333;
+        color: #fff;
+    }
+
+    .header-sticky .lang-switcher-btn.active {
+        background: #333;
+        color: #fff;
+    }
+  </style>
 </head>
 
 <body>
@@ -39,7 +88,7 @@
       <div class="hamburger_top d-flex align-items-center justify-content-between">
         <div class="hamburger_logo">
           <a href="index.html" class="mobile_logo">
-            <img  loading="lazy" src="images/logo hs.png" alt="Grupo H&S Logo" >
+            <img  loading="lazy" src="../images/logo hs.png" alt="Grupo H&S Logo" >
           </a>
         </div>
         <div class="hamburger_close">
@@ -47,13 +96,13 @@
         </div>
       </div>
       <div class="offcanvas-text">
-        <p>O Grupo H&S é uma multinacional presente em Angola desde 2006, atuando na construção civil, imobiliário, indústria e investimentos diversificados.</p>
+        <p>Grupo H&S is a multinational company present in Angola since 2006, operating in civil construction, real estate, industry and diversified investments.</p>
       </div>
       <div class="hamburger-infos">
-        <h5 class="hamburger-title">Contactos</h5>
+        <h5 class="hamburger-title">Contacts</h5>
         <div class="contact-info">
           <div class="contact-item">
-            <span class="subtitle">Telefone</span>
+            <span class="subtitle">Phone</span>
             <a class="contact-link" href="tel:+ 941189382">+244 941 189 382</a>
           </div>
           <div class="contact-item">
@@ -61,19 +110,19 @@
             <a class="contact-link" href="mailto:Dghsimo@outlook.com">Dghsimo@outlook.com</a>
           </div>
           <div class="contact-item">
-            <span class="subtitle">Localização</span>
-            <span class="contact-link">Sede em Luanda, Angola</span>
+            <span class="subtitle">Location</span>
+            <span class="contact-link">Headquarters in Luanda, Angola</span>
           </div>
         </div>
       </div>
     </div>
     <div class="hamburger-socials">
-      <h5 class="hamburger-title">Siga-nos</h5>
+      <h5 class="hamburger-title">Follow us</h5>
       <div class="social-links style-3">
         <ul>
           <li><a href="https://www.facebook.com/profile.php?id=100089617172193" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
           <li><a href="https://www.instagram.com/grupohs.angola/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-         
+
           <li><a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
         </ul>
       </div>
@@ -91,14 +140,14 @@
         <div class="hamburger_top d-flex align-items-center justify-content-between">
           <div class="hamburger_logo">
             <a href="index.html" class="mobile_logo">
-              <img  loading="lazy" src="images/logo hs.png" alt="Logo">
+              <img  loading="lazy" src="../images/logo hs.png" alt="Logo">
             </a>
           </div>
           <div class="hamburger_close">
             <button class="hamburger_close_btn"><i class="fa-thin fa-times"></i></button>
           </div>
         </div>
-   
+
         <div class="hamburger_menu">
           <div class="  language-switcher">
                 <button class="  lang-switcher-btn active" data-lang="pt" title="Português">PT</button>
@@ -125,14 +174,14 @@
         </div>
       </div>
       <div class="hamburger-socials">
-        <h5 class="hamburger-title">Siga Nós</h5>
+        <h5 class="hamburger-title">Follow Us</h5>
         <div class="social-links style-3">
           <ul>
             <li><a href="https://www.facebook.com/profile.php?id=100089617172193" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
             </li>
             <li><a href="https://www.instagram.com/grupohs.angola/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             </li>
-            
+
             <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
             </li>
           </ul>
@@ -147,45 +196,44 @@
       <div class="row"><div class="col-12">
         <div class="header-wrapper">
           <div class="site_logo">
-            <a class="logo" href="index.html"><img src="images/logo hs.png" alt="Grupo H&S"></a>
+            <a class="logo" href="index.html"><img src="../images/logo hs.png" alt="Grupo H&S"></a>
           </div>
 
           <div class="menu-area d-none d-lg-inline-flex align-items-center">
             <nav id="mobile-menu" class="mainmenu">
               <ul>
-  <li ><a href="sobrenos.html">Quem somos</a></li>
+  <li ><a href="sobrenos.html">About us</a></li>
   <li class="current-menu-item" class="has-dropdown">
-    <a href="#areas.html">Áreas de negócio</a>
+    <a href="#areas.html">Business areas</a>
     <ul class="sub-menu mega-menu-service">
-      <li><a class="mega-menu-service-single" href="area-construcao.html"><span class="mega-menu-service-title">Construção Civil</span></a></li>
-      <li><a class="mega-menu-service-single" href="area-imobiliario.html"><span class="mega-menu-service-title">Imobiliário</span></a></li>
+      <li><a class="mega-menu-service-single" href="area-construcao.html"><span class="mega-menu-service-title">Civil Construction</span></a></li>
+      <li><a class="mega-menu-service-single" href="area-imobiliario.html"><span class="mega-menu-service-title">Real Estate</span></a></li>
       <li><a class="mega-menu-service-single" href="area-industrial.html"><span class="mega-menu-service-title">Industrial</span></a></li>
-      
-      
-     
-            <li><a class="mega-menu-service-single" href="area-investimentos.html"><span class="mega-menu-service-title">Novos Investimentos</span></a></li>
-      <li><a class="mega-menu-service-single" href="area-agricultura.html"><span class="mega-menu-service-title">Agricultura & Pescas</span></a></li>
+
+
+
+            <li><a class="mega-menu-service-single" href="area-investimentos.html"><span class="mega-menu-service-title">New Investments</span></a></li>
+      <li><a class="mega-menu-service-single" href="area-agricultura.html"><span class="mega-menu-service-title">Agriculture & Fishing</span></a></li>
     </ul>
   </li>
-  <li><a href="carreiras.html">Carreiras</a></li>
-  <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="responsiblidade.html">Responsabilidade Social</a></li>
-    <li><a href="contacto.html">Contacto</a></li>
+  <li><a href="carreiras.html">Careers</a></li>
+  <li><a href="noticias.html">News</a></li>
+    <li><a href="responsiblidade.html">Social Responsibility</a></li>
+    <li><a href="contacto.html">Contact</a></li>
 
-  
+
+
 </ul>
             </nav>
           </div>
 
-          <div class="header-right-item d-none d-lg-inline-flex">
-              <div class="header-sticky  language-switcher">
+           <div class="header-sticky  language-switcher">
                 <button class="  lang-switcher-btn active" data-lang="pt" title="Português">PT</button>
                 <button class="   lang-switcher-btn" data-lang="en" title="English">EN</button>
-              </div>
-
-             <div class="header-button">
+              </div><div class="header-right-item d-none d-lg-inline-flex">
+            <div class="header-button">
               <a class="tj-primary-btn" href="contacto.html">
-                <span class="btn-text"><span>Fale Connosco</span></span>
+                <span class="btn-text"><span>Contact Us</span></span>
                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
               </a>
             </div>
@@ -206,34 +254,34 @@
           <div class="header-wrapper">
             <!-- site logo -->
             <div class="site_logo">
-              <a class="logo" href="index.html"><img src="images/logo hs.png"  alt=""></a>
+              <a class="logo" href="index.html"><img src="../images/logo hs.png"  alt=""></a>
             </div>
 
             <!-- navigation -->
             <div class="menu-area d-none d-lg-inline-flex align-items-center">
               <nav class="mainmenu">
             <ul>
-  <li ><a href="sobrenos.html">Quem somos</a></li>
+  <li ><a href="sobrenos.html">About us</a></li>
   <li class="current-menu-item" class="has-dropdown">
-    <a href="#areas.html">Áreas de negócio</a>
+    <a href="#areas.html">Business areas</a>
     <ul class="sub-menu mega-menu-service">
-      <li><a class="mega-menu-service-single" href="area-construcao.html"><span class="mega-menu-service-title">Construção Civil</span></a></li>
-      <li><a class="mega-menu-service-single" href="area-imobiliario.html"><span class="mega-menu-service-title">Imobiliário</span></a></li>
+      <li><a class="mega-menu-service-single" href="area-construcao.html"><span class="mega-menu-service-title">Civil Construction</span></a></li>
+      <li><a class="mega-menu-service-single" href="area-imobiliario.html"><span class="mega-menu-service-title">Real Estate</span></a></li>
       <li><a class="mega-menu-service-single" href="area-industrial.html"><span class="mega-menu-service-title">Industrial</span></a></li>
-      
-      
-     
-            <li><a class="mega-menu-service-single" href="area-investimentos.html"><span class="mega-menu-service-title">Agricultura & Pesca </span></a></li>
-      <li><a class="mega-menu-service-single" href="area-investimentos.html"><span class="mega-menu-service-title">Novos Investimentos</span></a></li>
+
+
+
+            <li><a class="mega-menu-service-single" href="area-investimentos.html"><span class="mega-menu-service-title">New Investments</span></a></li>
+      <li><a class="mega-menu-service-single" href="area-agricultura.html"><span class="mega-menu-service-title">Agriculture & Fishing</span></a></li>
     </ul>
   </li>
-  <li><a href="carreiras.html">Carreiras</a></li>
-  <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="responsiblidade.html">Responsabilidade Social</a></li>
-    <li><a href="contacto.html">Contacto</a></li>
+  <li><a href="carreiras.html">Careers</a></li>
+  <li><a href="noticias.html">News</a></li>
+    <li><a href="responsiblidade.html">Social Responsibility</a></li>
+    <li><a href="contacto.html">Contact</a></li>
 
 
-  
+
             </ul>
 
               </nav>
@@ -255,7 +303,7 @@
                 <button class="   lang-switcher-btn" data-lang="en" title="English">EN</button>
               </div><div class="header-button">
               <a class="tj-primary-btn" href="contacto.html">
-  <span class="btn-text"><span>Contacto</span></span>
+  <span class="btn-text"><span>Contact</span></span>
   <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
 </a>
 
@@ -286,7 +334,7 @@
         <div class="space-for-header"></div>
 
         <!-- start: Breadcrumb / Hero -->
-        <section class="tj-page-header section-gap-x" data-bg-image="images/industrial/hero.webp">
+        <section class="tj-page-header section-gap-x" data-bg-image="../images/industrial/hero.webp">
           <div class="container">
             <div class="row">
               <div class="col-lg-12">
@@ -302,7 +350,7 @@
               </div>
             </div>
           </div>
-          <div class="page-header-overlay" data-bg-image="images/shape/pheader-overlay.webp"></div>
+          <div class="page-header-overlay" data-bg-image="../images/shape/pheader-overlay.webp"></div>
         </section>
         <!-- end: Breadcrumb / Hero -->
 
@@ -314,24 +362,24 @@
               <div class="col-lg-8">
                 <div class="post-details-wrapper">
                   <div class="blog-images wow fadeInUp" data-wow-delay=".1s">
-                    <img src="images/industrial/ada-steel-inside-4.webp" alt="H&S Industrial">
+                    <img src="../images/industrial/ada-steel-inside-4.webp" alt="H&S Industrial">
                   </div>
 
-                  <h2 class="title title-anim">Infraestruturas e Operações Industriais com Eficiência e Segurança</h2>
+                  <h2 class="title title-anim">Industrial Infrastructures and Operations with Efficiency and Safety</h2>
 
                   <div class="blog-text">
                     <p class="wow fadeInUp" data-wow-delay=".2s">
-                      A H&S apoia o crescimento industrial através de soluções integradas, que abrangem desde a conceção e construção de unidades fabris até à manutenção, automação e gestão operacional. O nosso foco é garantir produtividade, segurança, conformidade e sustentabilidade, em alinhamento com as melhores práticas internacionais.
+                      H&S supports industrial growth through integrated solutions, ranging from the design and construction of factory units to maintenance, automation and operational management. Our focus is to ensure productivity, safety, compliance and sustainability, in alignment with the best international practices.
 
                     </p>
 
-                    <h3 class="mt-4 wow fadeInUp" data-wow-delay=".2s">O que fazemos</h3>
+                    <h3 class="mt-4 wow fadeInUp" data-wow-delay=".2s">What we do</h3>
                     <ul class="wow fadeInUp" data-wow-delay=".3s">
-                      <li>• Projectos EPC (Engenharia, Procurement e Construção) para unidades e plantas industriais</li>
-                      <li>• Manutenção eletromecânica, utilidades e facilities</li>
-                      <li>• Automação, instrumentação e monitorização (SCADA/IoT)</li>
-                      <li>• Oficina de estrutura metálica</li>
-                      <li>• Soluções de elevação e montagem de estruturas metálicas</li>
+                      <li>• EPC projects (Engineering, Procurement and Construction) for industrial units and plants</li>
+                      <li>• Electromechanical maintenance, utilities and facilities</li>
+                      <li>• Automation, instrumentation and monitoring (SCADA/IoT)</li>
+                      <li>• Metal structure workshop</li>
+                      <li>• Lifting and assembly solutions for metal structures</li>
                     </ul>
 
                     <!-- Two images -->
@@ -339,88 +387,88 @@
                       <div class="row">
                         <div class="col-sm-6">
                           <div class="image-box wow fadeInUp" data-wow-delay=".2s">
-                            <img src="images/industrial/20150624_141728.webp" alt="Linha de Produção">
+                            <img src="../images/industrial/20150624_141728.webp" alt="Production Line">
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                            <img src="images/industrial/industrrial.webp" alt="Manutenção Industrial">
+                            <img src="../images/industrial/industrrial.webp" alt="Industrial Maintenance">
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s">Sectores atendidos</h3>
+                    <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s">Sectors served</h3>
                     <div class="details-content-box">
                       <div class="service-details-item wow fadeInUp" data-wow-delay=".2s">
-                        <h6 class="title">01. Agroindústria & Bebidas</h6>
+                        <h6 class="title">01. Agri-food & Beverages</h6>
                         <div class="desc">
-                          <p>Implementação e otimização de linhas de processamento, sistemas de frio industrial e utilidades (vapor, ar comprimido e água gelada), assegurando eficiência, fiabilidade e controlo higiossanitário.</p>
+                          <p>Implementation and optimization of processing lines, industrial refrigeration systems and utilities (steam, compressed air and chilled water), ensuring efficiency, reliability and hygienic-sanitary control.</p>
                         </div>
                       </div>
                       <div class="service-details-item wow fadeInUp" data-wow-delay=".3s">
-                        <h6 class="title">02. Materiais de Construção</h6>
+                        <h6 class="title">02. Construction Materials</h6>
                         <div class="desc">
-                          <p>Desenvolvimento de plantas de pré-fabricados, cimentos e cerâmicas, com automação, monitorização contínua e controlo de qualidade em tempo real, garantindo consistência produtiva e redução de desperdício.</p>
+                          <p>Development of prefabricated plants, cements and ceramics, with automation, continuous monitoring and real-time quality control, ensuring productive consistency and waste reduction.</p>
                         </div>
                       </div>
                       <div class="service-details-item wow fadeInUp" data-wow-delay=".4s">
-                        <h6 class="title">03. Óleo & Gás / Energia</h6>
+                        <h6 class="title">03. Oil & Gas / Energy</h6>
                         <div class="desc">
-                          <p>Projectos industriais e infraestruturas auxiliares, com foco em segurança de processos, inspeções técnicas, integridade mecânica e continuidade operacional, em conformidade com normas internacionais do sector.</p>
+                          <p>Industrial projects and auxiliary infrastructures, focusing on process safety, technical inspections, mechanical integrity and operational continuity, in compliance with international sector standards.</p>
                         </div>
                       </div>
                     </div>
 
                     <!-- KPIs / Diferenciais -->
-                    <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s">Diferenciais H&S</h3>
+                    <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s">H&S Differentiators</h3>
                     <ul class="wow fadeInUp" data-wow-delay=".3s">
-                      <li><span><i class="tji-check"></i></span>Compliance e certificações aplicáveis (ISO, OSHA)</li>
-                      <li><span><i class="tji-check"></i></span>Engenharia integrada: civil, elétrica, mecânica e automação</li>
-                      <li><span><i class="tji-check"></i></span>Planos de manutenção preditiva e indicadores OEE</li>
-                      <li><span><i class="tji-check"></i></span>projectos sustentáveis, com redução de consumo e resíduos</li>
+                      <li><span><i class="tji-check"></i></span>Compliance and applicable certifications (ISO, OSHA)</li>
+                      <li><span><i class="tji-check"></i></span>Integrated engineering: civil, electrical, mechanical and automation</li>
+                      <li><span><i class="tji-check"></i></span>Predictive maintenance plans and OEE indicators</li>
+                      <li><span><i class="tji-check"></i></span>Sustainable projects, with reduced consumption and waste</li>
                     </ul>
 
                     <!-- Process steps -->
-                    <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s">Como Trabalhamos</h3>
+                    <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s">How we work</h3>
                     <ol class="wow fadeInUp" data-wow-delay=".3s">
-                      <li><strong>Diagnóstico e Levantamento</strong> — Análise técnica, avaliação de riscos e estudo de viabilidade.</li>
-                      <li><strong>Projectoe Planeamento</strong> — Engenharia detalhada, definição de recursos e cronogramas realistas.</li>
-                      <li><strong>Execução e Comissionamento</strong> — Montagem, testes, validação e arranque assistido do sistema.</li>
-                      <li><strong>Operação Assistida</strong> — Formação de equipas, emissão de SOPs e implementação de rotinas de manutenção.</li>
+                      <li><strong>Diagnosis and Survey</strong> — Technical analysis, risk assessment and feasibility study.</li>
+                      <li><strong>Project and Planning</strong> — Detailed engineering, resource definition and realistic schedules.</li>
+                      <li><strong>Execution and Commissioning</strong> — Assembly, testing, validation and assisted system startup.</li>
+                      <li><strong>Assisted Operation</strong> — Team training, SOP issuance and implementation of maintenance routines.</li>
                     </ol>
 
                     <!-- FAQ -->
-                    <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s">Perguntas Frequentes</h3>
+                    <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s">Frequently Asked Questions</h3>
                     <div class="accordion tj-faq style-2" id="faqIndustrial">
                       <div class="accordion-item active wow fadeInUp" data-wow-delay=".2s">
                         <button class="faq-title" type="button" data-bs-toggle="collapse" data-bs-target="#faq-1" aria-expanded="true">
-                          Vocês actuam como EPC (turn-key)?
+                          Do you act as EPC (turn-key)?
                         </button>
                         <div id="faq-1" class="collapse show" data-bs-parent="#faqIndustrial">
                           <div class="accordion-body faq-text">
-                            <p>Sim. Podemos assumir o escopo completo (engenharia, compras, construção e comissionamento),
-                              entregando a planta operacional.</p>
+                            <p>Yes. We can assume the complete scope (engineering, procurement, construction and commissioning),
+                              delivering the operational plant.</p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item wow fadeInUp" data-wow-delay=".3s">
                         <button class="faq-title collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-2">
-                          Implementam automação e sistemas SCADA?
+                          Do you implement automation and SCADA systems?
                         </button>
                         <div id="faq-2" class="collapse" data-bs-parent="#faqIndustrial">
                           <div class="accordion-body faq-text">
-                            <p>Sim. Integramos PLCs, sensores, histórico de dados e dashboards para controlo e tomada de decisão.</p>
+                            <p>Yes. We integrate PLCs, sensors, data history and dashboards for control and decision making.</p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item wow fadeInUp" data-wow-delay=".4s">
                         <button class="faq-title collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-3">
-                          A H&S fornece contratos de manutenção?
+                          Does H&S provide maintenance contracts?
                         </button>
                         <div id="faq-3" class="collapse" data-bs-parent="#faqIndustrial">
                           <div class="accordion-body faq-text">
-                            <p>Oferecemos manutenção preventiva, preditiva e corretiva, com SLAs e relatórios de performance.</p>
+                            <p>We offer preventive, predictive and corrective maintenance, with SLAs and performance reports.</p>
                           </div>
                         </div>
                       </div>
@@ -431,7 +479,7 @@
                   <div class="tj-post__navigation mb-0 wow fadeInUp" data-wow-delay=".2s">
                     <div class="tj-nav__post previous">
                       <div class="tj-nav-post__nav prev_post">
-                        <a href="area-imobiliario.html"><span><i class="tji-arrow-left"></i></span>Imobiliário</a>
+                        <a href="area-imobiliario.html"><span><i class="tji-arrow-left"></i></span>Real Estate</a>
                       </div>
                     </div>
                     <div class="tj-nav-post__grid">
@@ -439,7 +487,7 @@
                     </div>
                     <div class="tj-nav__post next">
                       <div class="tj-nav-post__nav next_post">
-                        <a href="area-investimentos.html">Investimentos<span><i class="tji-arrow-right"></i></span></a>
+                        <a href="area-investimentos.html">Investments<span><i class="tji-arrow-right"></i></span></a>
                       </div>
                     </div>
                   </div>
@@ -450,28 +498,28 @@
               <div class="col-lg-4">
                 <div class="tj-main-sidebar slidebar-stickiy">
                   <div class="tj-sidebar-widget service-categories wow fadeInUp" data-wow-delay=".1s">
-                    <h4 class="widget-title"> Áreas de negócio</h4>
+                    <h4 class="widget-title"> Business Areas</h4>
                     <ul>
-                      <li><a href="area-construcao.html">Construção Civil <span class="icon"><i class="tji-arrow-right"></i></span></a></li>
-                      <li><a href="area-imobiliario.html">Imobiliário <span class="icon"><i class="tji-arrow-right"></i></span></a></li>
+                      <li><a href="area-construcao.html">Civil Construction <span class="icon"><i class="tji-arrow-right"></i></span></a></li>
+                      <li><a href="area-imobiliario.html">Real Estate <span class="icon"><i class="tji-arrow-right"></i></span></a></li>
                       <li><a class="active" href="area-industrial.html">Industrial <span class="icon"><i class="tji-arrow-right"></i></span></a></li>
-                      <li><a href="area-agricultura.html">Agricultura & Pescas <span class="icon"><i class="tji-arrow-right"></i></span></a></li>
-                      <li><a href="area-investimentos.html">Novos Investimentos <span class="icon"><i class="tji-arrow-right"></i></span></a></li>
+                      <li><a href="area-agricultura.html">Agriculture & Fishing <span class="icon"><i class="tji-arrow-right"></i></span></a></li>
+                      <li><a href="area-investimentos.html">New Investments <span class="icon"><i class="tji-arrow-right"></i></span></a></li>
                     </ul>
                   </div>
 
                   <div class="tj-sidebar-widget widget-feature-item wow fadeInUp" data-wow-delay=".3s">
                     <div class="feature-box">
                       <div class="feature-content">
-                        <h2 class="title">Precisa de um orçamen-<br>to?</h2>
-                        <span>Fale com a nossa equipa técnica</span>
+                        <h2 class="title">Need a quote?</h2>
+                        <span>Speak with our technical team</span>
                         <a class="read-more feature-contact" href="tel:+244900000000">
                           <i class="tji-phone-3"></i>
                           <span>+244 941 189 382</span>
                         </a>
                       </div>
                       <div class="feature-images">
-                        <img src="images/service/service-ad.webp" alt="Contacte-nos">
+                        <img src="../images/service/service-ad.webp" alt="Contact us">
                       </div>
                     </div>
                   </div>
@@ -490,16 +538,16 @@
               <div class="col-12">
                 <div class="cta-area">
                   <div class="cta-content">
-                    <h2 class="title title-anim">Pronto para acelerar a sua operação industrial?</h2>
+                    <h2 class="title title-anim">Ready to accelerate your industrial operation?</h2>
                     <div class="cta-btn wow fadeInUp" data-wow-delay=".3s">
                       <a class="tj-primary-btn btn-dark" href="contact.html">
-                        <span class="btn-text"><span>Solicitar Proposta</span></span>
+                        <span class="btn-text"><span>Request Proposal</span></span>
                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                       </a>
                     </div>
                   </div>
                   <div class="cta-img">
-                    <img src="images/industrial/steel.jpg" alt="CTA">
+                    <img src="../images/industrial/steel.jpg" alt="CTA">
                   </div>
                 </div>
               </div>
@@ -518,13 +566,13 @@
         <div class="col-12">
           <div class="footer-subscribe wow fadeInUp" data-wow-delay=".3s">
             <div class="subscribe-logo">
-              <img  loading="lazy" src="images/logo hs.png" alt="Grupo H&S">
+              <img  loading="lazy" src="../images/logo hs.png" alt="Grupo H&S">
             </div>
             <div class="subscribe-form">
               <form action="#" method="post">
-                <input type="email" name="email" placeholder="O seu e-mail" required>
+                <input type="email" name="email" placeholder="Your email" required>
                 <button class="tj-primary-btn" type="submit">
-                  <span class="btn-text"><span>Subscrever</span></span>
+                  <span class="btn-text"><span>Subscribe</span></span>
                   <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                 </button>
               </form>
@@ -544,26 +592,26 @@
           <div class="footer-widget footer-col-1 wow fadeInUp" data-wow-delay=".1s">
             <div class="footer-logo">
               <a href="index.html">
-                <img  loading="lazy" src="images/logo hs.png" alt="Grupo H&S">
+                <img  loading="lazy" src="../images/logo hs.png" alt="Grupo H&S">
               </a>
             </div>
             <div class="footer-text">
-              <p>Construção civil, imobiliário, indústria e investimentos — há mais de 18 anos a criar valor em Angola.</p>
+              <p>Civil construction, real estate, industry and investments — creating value in Angola for over 18 years.</p>
             </div>
-           
+
           </div>
         </div>
 
         <!-- Col 2: navegação -->
         <div class="col-xl-3 col-md-6">
           <div class="footer-widget footer-col-2 widget-nav-menu wow fadeInUp" data-wow-delay=".3s">
-            <h5 class="title">Áreas de negócio</h5>
+            <h5 class="title">Business areas</h5>
             <ul>
-              <li><a href="area-construcao.html">Construção Civil</a></li>
-              <li><a href="area-imobiliario.html">Imobiliário</a></li>
+              <li><a href="area-construcao.html">Civil Construction</a></li>
+              <li><a href="area-imobiliario.html">Real Estate</a></li>
               <li><a href="area-industrial.html">Industrial</a></li>
-              <li><a href="area-agricultura-pesca.html">Agricultura & Pesca</a></li>
-              
+              <li><a href="area-agricultura-pesca.html">Agriculture & Fishing</a></li>
+
             </ul>
           </div>
         </div>
@@ -571,14 +619,14 @@
         <!-- Col 3: recursos -->
         <div class="col-xl-3 col-md-6">
           <div class="footer-widget footer-col-3 widget-nav-menu wow fadeInUp" data-wow-delay=".5s">
-            <h5 class="title">Recursos</h5>
+            <h5 class="title">Resources</h5>
             <ul>
-              <li><a href="sobrenos.html">Quem somos</a></li>
-              
-              <li><a href="carreiras.html">Carreiras</a></li>
-              <li><a href="noticias.html">Notícias e atualizações</a></li>
-            
-              <li><a href="contacto.html">Contacto</a></li>
+              <li><a href="sobrenos.html">About us</a></li>
+
+              <li><a href="carreiras.html">Careers</a></li>
+              <li><a href="noticias.html">News and updates</a></li>
+
+              <li><a href="contacto.html">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -586,18 +634,18 @@
         <!-- Col 4: contactos -->
         <div class="col-xl-3 col-md-6">
           <div class="footer-widget widget-contact wow fadeInUp" data-wow-delay=".7s">
-            <h5 class="title">Sede</h5>
+            <h5 class="title">Headquarters</h5>
             <div class="footer-contact-info">
               <div class="contact-item">
                 <span>Luanda, Angola</span>
               </div>
                <div class="contact-item">
-               <span> <i class="tji-phone-3"></i><a href="tel:+ 941189382" > +244 941 189 382</a></span>  
-              <span><i class="tji-envelop"></i><a href="mailto:Dghsimo@outlook.com" > Dghsimo@outlook.com</a></span> 
+               <span> <i class="tji-phone-3"></i><a href="tel:+ 941189382" > +244 941 189 382</a></span>
+              <span><i class="tji-envelop"></i><a href="mailto:Dghsimo@outlook.com" > Dghsimo@outlook.com</a></span>
               </div>
               <div class="contact-item">
-                <span><i class="tji-clock"></i> Seg–Sex 08:00–17:00</span> <br/>
-                <span style="margin-left:28px;">Sab 08:00–12:00</span> <br/>
+                <span><i class="tji-clock"></i> Mon–Fri 08:00–17:00</span> <br/>
+                <span style="margin-left:28px;">Sat 08:00–12:00</span> <br/>
               </div>
             </div>
           </div>
@@ -607,8 +655,7 @@
     </div>
   </div>
 
-  
-  
+
 
   <!-- Copyright -->
   <div class="tj-copyright-area-2">
@@ -617,19 +664,19 @@
         <div class="col-12">
           <div class="copyright-content-area">
             <div class="copyright-text">
-              <p>© 2025 <a href="index.html">Grupo H&amp;S</a> — Todos os direitos reservados</p>
+              <p>© 2025 <a href="index.html">Grupo H&S</a> — All rights reserved</p>
             </div>
             <div class="social-links style-3">
                 <ul>
                 <li><a href="https://www.facebook.com/profile.php?id=100089617172193" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
                 <li><a href="https://www.instagram.com/grupohs.angola/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                 <li><a href="https://www.linkedin.com/company/108582037/admin/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                
-               
+
+
               </ul>
             </div>
             <div class="copyright-menu">
-              
+
             </div>
           </div><!-- /.copyright-content-area -->
         </div>
@@ -637,30 +684,30 @@
     </div>
   </div>
 
-  <div class="bg-shape-1"><img  loading="lazy" src="images/pattern-2.svg" alt=""></div>
-  <div class="bg-shape-2"><img  loading="lazy" src="images/pattern-3.svg" alt=""></div>
+  <div class="bg-shape-1"><img  loading="lazy" src="../images/pattern-2.svg" alt=""></div>
+  <div class="bg-shape-2"><img  loading="lazy" src="../images/pattern-3.svg" alt=""></div>
 </footer>
 <!-- end: Footer Section -->
     </div>
   </div>
 
   <!-- JS -->
-  <script src="js/jquery.min.js" defer></script>
-  <script src="js/bootstrap.bundle.min.js" defer></script>
-  <script src="js/gsap.min.js" defer></script>
-  <script src="js/ScrollSmoother.js" defer></script>
-  <script src="js/gsap-scroll-to-plugin.min.js" defer></script>
-  <script src="js/gsap-scroll-trigger.min.js" defer></script>
-  <script src="js/gsap-split-text.min.js" defer></script>
-  <script src="js/jquery.nice-select.min.js" defer></script>
-  <script src="js/swiper.min.js" defer></script>
-  <script src="js/odometer.min.js" defer></script>
-  <script src="js/venobox.min.js" defer></script>
-  <script src="js/appear.min.js" defer></script>
-  <script src="js/wow.min.js" defer></script>
-  <script src="js/meanmenu.js" defer></script>
-    <script src="js/main.js" defer></script>
-  <script src="js/language-switcher.js" defer></script>
+  <script src="../js/jquery.min.js" defer></script>
+  <script src="../js/bootstrap.bundle.min.js" defer></script>
+  <script src="../js/gsap.min.js" defer></script>
+  <script src="../js/ScrollSmoother.js" defer></script>
+  <script src="../js/gsap-scroll-to-plugin.min.js" defer></script>
+  <script src="../js/gsap-scroll-trigger.min.js" defer></script>
+  <script src="../js/gsap-split-text.min.js" defer></script>
+  <script src="../js/jquery.nice-select.min.js" defer></script>
+  <script src="../js/swiper.min.js" defer></script>
+  <script src="../js/odometer.min.js" defer></script>
+  <script src="../js/venobox.min.js" defer></script>
+  <script src="../js/appear.min.js" defer></script>
+  <script src="../js/wow.min.js" defer></script>
+  <script src="../js/meanmenu.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/language-switcher.js" defer></script>
 </body>
 
 </html>
