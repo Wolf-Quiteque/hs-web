@@ -45,6 +45,7 @@ class LanguageSwitcher {
         const htmlElement = document.documentElement;
         const currentPath = window.location.pathname;
         const isEnglish = currentPath.includes('/en/');
+        const isChinese = currentPath.includes('/zh/');
 
         if (lang === 'en') {
             if (!isEnglish) {
@@ -52,11 +53,35 @@ class LanguageSwitcher {
                 if (!fileName) {
                     fileName = 'index.html';
                 }
-                window.location.href = `en/${fileName}`;
+                // Remove zh or pt from path and add en
+                let newPath = currentPath.replace('/zh/', '/').replace('/pt/', '/');
+                if (newPath === currentPath) {
+                    newPath = 'en/' + fileName;
+                } else {
+                    newPath = newPath.replace(fileName, 'en/' + fileName);
+                }
+                window.location.href = newPath;
+            }
+        } else if (lang === 'zh') {
+            if (!isChinese) {
+                let fileName = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+                if (!fileName) {
+                    fileName = 'index.html';
+                }
+                // Remove en or pt from path and add zh
+                let newPath = currentPath.replace('/en/', '/').replace('/pt/', '/');
+                if (newPath === currentPath) {
+                    newPath = 'zh/' + fileName;
+                } else {
+                    newPath = newPath.replace(fileName, 'zh/' + fileName);
+                }
+                window.location.href = newPath;
             }
         } else { // lang === 'pt'
             if (isEnglish) {
                 window.location.href = window.location.href.replace('/en', '');
+            } else if (isChinese) {
+                window.location.href = window.location.href.replace('/zh', '');
             }
         }
     }
