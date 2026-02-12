@@ -12450,6 +12450,67 @@ START: Blog CSS
   font-size: 22px;
 }
 
+
+/* Portfolio Slider */
+.portfolio-slider-section .sec-heading-wrap.style-3 {
+  margin-bottom: 10px;
+}
+
+.portfolio-slider-section .portfolio-intro {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-slider-section .portfolio-desc {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.portfolio-slider-section .portfolio-slider .swiper-pagination-area {
+  margin-top: 24px;
+}
+
+.portfolio-card {
+  height: auto;
+  min-height: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.portfolio-card .service-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portfolio-card .portfolio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tj-color-theme-primary);
+}
+
+.portfolio-card .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.portfolio-card:hover .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .portfolio-card {
+    min-height: 280px;
+  }
+}
 /* !END: Blog CSS */
 /**----------------------------------------
 START: CTA CSS
@@ -18136,6 +18197,67 @@ START: Blog CSS
   }
 }
 
+
+/* Portfolio Slider */
+.portfolio-slider-section .sec-heading-wrap.style-3 {
+  margin-bottom: 10px;
+}
+
+.portfolio-slider-section .portfolio-intro {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-slider-section .portfolio-desc {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.portfolio-slider-section .portfolio-slider .swiper-pagination-area {
+  margin-top: 24px;
+}
+
+.portfolio-card {
+  height: auto;
+  min-height: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.portfolio-card .service-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portfolio-card .portfolio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tj-color-theme-primary);
+}
+
+.portfolio-card .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.portfolio-card:hover .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .portfolio-card {
+    min-height: 280px;
+  }
+}
 /* !END: Blog CSS */
 /**----------------------------------------
 START: Theme Header CSS
@@ -19817,6 +19939,67 @@ START: Blog CSS
   }
 }
 
+
+/* Portfolio Slider */
+.portfolio-slider-section .sec-heading-wrap.style-3 {
+  margin-bottom: 10px;
+}
+
+.portfolio-slider-section .portfolio-intro {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-slider-section .portfolio-desc {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.portfolio-slider-section .portfolio-slider .swiper-pagination-area {
+  margin-top: 24px;
+}
+
+.portfolio-card {
+  height: auto;
+  min-height: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.portfolio-card .service-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portfolio-card .portfolio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tj-color-theme-primary);
+}
+
+.portfolio-card .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.portfolio-card:hover .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .portfolio-card {
+    min-height: 280px;
+  }
+}
 /* !END: Blog CSS */
 /**----------------------------------------
 START: Theme Footer CSS
@@ -21486,6 +21669,67 @@ START: Blog CSS
   inset-inline-end: 15px;
 }
 
+
+/* Portfolio Slider */
+.portfolio-slider-section .sec-heading-wrap.style-3 {
+  margin-bottom: 10px;
+}
+
+.portfolio-slider-section .portfolio-intro {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-slider-section .portfolio-desc {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.portfolio-slider-section .portfolio-slider .swiper-pagination-area {
+  margin-top: 24px;
+}
+
+.portfolio-card {
+  height: auto;
+  min-height: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.portfolio-card .service-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portfolio-card .portfolio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tj-color-theme-primary);
+}
+
+.portfolio-card .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.portfolio-card:hover .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .portfolio-card {
+    min-height: 280px;
+  }
+}
 /* !END: Blog CSS */
 /**----------------------------------------
 START: Client CSS
@@ -22723,6 +22967,67 @@ START: Blog CSS
   background-color: var(--tj-color-theme-primary);
 }
 
+
+/* Portfolio Slider */
+.portfolio-slider-section .sec-heading-wrap.style-3 {
+  margin-bottom: 10px;
+}
+
+.portfolio-slider-section .portfolio-intro {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-slider-section .portfolio-desc {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.portfolio-slider-section .portfolio-slider .swiper-pagination-area {
+  margin-top: 24px;
+}
+
+.portfolio-card {
+  height: auto;
+  min-height: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.portfolio-card .service-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portfolio-card .portfolio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tj-color-theme-primary);
+}
+
+.portfolio-card .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.portfolio-card:hover .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .portfolio-card {
+    min-height: 280px;
+  }
+}
 /* !END: Blog CSS */
 /**----------------------------------------
 START: CTA CSS
@@ -24474,6 +24779,67 @@ START: Blog CSS
   font-size: 24px;
 }
 
+
+/* Portfolio Slider */
+.portfolio-slider-section .sec-heading-wrap.style-3 {
+  margin-bottom: 10px;
+}
+
+.portfolio-slider-section .portfolio-intro {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-slider-section .portfolio-desc {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.portfolio-slider-section .portfolio-slider .swiper-pagination-area {
+  margin-top: 24px;
+}
+
+.portfolio-card {
+  height: auto;
+  min-height: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.portfolio-card .service-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portfolio-card .portfolio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tj-color-theme-primary);
+}
+
+.portfolio-card .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.portfolio-card:hover .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .portfolio-card {
+    min-height: 280px;
+  }
+}
 /* !END: Blog CSS */
 /**----------------------------------------
 START: Theme Header CSS
@@ -26644,6 +27010,67 @@ START: Blog CSS
   }
 }
 
+
+/* Portfolio Slider */
+.portfolio-slider-section .sec-heading-wrap.style-3 {
+  margin-bottom: 10px;
+}
+
+.portfolio-slider-section .portfolio-intro {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-slider-section .portfolio-desc {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.portfolio-slider-section .portfolio-slider .swiper-pagination-area {
+  margin-top: 24px;
+}
+
+.portfolio-card {
+  height: auto;
+  min-height: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.portfolio-card .service-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portfolio-card .portfolio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tj-color-theme-primary);
+}
+
+.portfolio-card .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.portfolio-card:hover .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .portfolio-card {
+    min-height: 280px;
+  }
+}
 /* !END: Blog CSS */
 /**----------------------------------------
 START: Theme Header CSS
@@ -28004,4 +28431,65 @@ START: Blog CSS
             color: #fff;
         }
 
+
+/* Portfolio Slider */
+.portfolio-slider-section .sec-heading-wrap.style-3 {
+  margin-bottom: 10px;
+}
+
+.portfolio-slider-section .portfolio-intro {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-slider-section .portfolio-desc {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.portfolio-slider-section .portfolio-slider .swiper-pagination-area {
+  margin-top: 24px;
+}
+
+.portfolio-card {
+  height: auto;
+  min-height: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.portfolio-card .service-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portfolio-card .portfolio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tj-color-theme-primary);
+}
+
+.portfolio-card .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.portfolio-card:hover .desc {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .portfolio-card {
+    min-height: 280px;
+  }
+}
 /* !END: Blog CSS *//*# sourceMappingURL=main.css.map */
