@@ -15067,6 +15067,30 @@ START: Blog Details CSS
 .post-details-wrapper .blog-images.capesca-hover:hover::after {
   opacity: 1;
 }
+/* Agricultura hover overlay */
+.post-details-wrapper .blog-images.agricultura-hover {
+  position: relative;
+}
+.post-details-wrapper .blog-images.agricultura-hover::after {
+  content: "Agricultura";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 61, 38, 0.88);
+  color: #fff;
+  font-size: clamp(26px, 3.2vw, 46px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+.post-details-wrapper .blog-images.agricultura-hover:hover::after {
+  opacity: 1;
+}
 .post-details-wrapper .title {
   line-height: 1.1;
   margin-bottom: 22px;
