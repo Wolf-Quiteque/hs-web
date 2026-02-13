@@ -125,7 +125,7 @@
                                         <ul class="sub-menu mega-menu-service">
                                             <li><a class="mega-menu-service-single" href="area-construcao.html"><span class="mega-menu-service-title">Construção Civil</span></a></li>
                                             <li><a class="mega-menu-service-single" href="area-imobiliario.html"><span class="mega-menu-service-title">Imobiliário</span></a></li>
-                                            <li><a class="mega-menu-service-single" href="area-Industrial.html"><span class="mega-menu-service-title">Industria</span></a></li>
+                                            <li><a class="mega-menu-service-single" href="area-industrial.html"><span class="mega-menu-service-title">Industria</span></a></li>
                                             <li><a class="mega-menu-service-single" href="area-agricultura.html"><span class="mega-menu-service-title">Agricultura & Pescas</span></a></li>
                                             <li><a class="mega-menu-service-single" href="area-investimentos.html"><span class="mega-menu-service-title">Novos Investimentos</span></a></li>
                                         </ul>
@@ -173,7 +173,7 @@
                                         <ul class="sub-menu mega-menu-service">
                                             <li><a class="mega-menu-service-single" href="area-construcao.html"><span class="mega-menu-service-title">Construção Civil</span></a></li>
                                             <li><a class="mega-menu-service-single" href="area-imobiliario.html"><span class="mega-menu-service-title">Imobiliário</span></a></li>
-                                            <li><a class="mega-menu-service-single" href="area-Industrial.html"><span class="mega-menu-service-title">Industria</span></a></li>
+                                            <li><a class="mega-menu-service-single" href="area-industrial.html"><span class="mega-menu-service-title">Industria</span></a></li>
                                             <li><a class="mega-menu-service-single" href="area-agricultura.html"><span class="mega-menu-service-title">Agricultura & Pescas</span></a></li>
                                             <li><a class="mega-menu-service-single" href="area-investimentos.html"><span class="mega-menu-service-title">Novos Investimentos</span></a></li>
                                         </ul>
@@ -327,7 +327,7 @@
                                     <!-- Navigation -->
                                     <div class="tj-post__navigation mb-0 wow fadeInUp" data-wow-delay=".2s">
                                         <div class="tj-nav__post previous">
-                                            <div class="tj-nav-post__nav prev_post"> <a href="area-Industrial.html"><span><i class="tji-arrow-left"></i></span>Industria</a> </div>
+                                            <div class="tj-nav-post__nav prev_post"> <a href="area-industrial.html"><span><i class="tji-arrow-left"></i></span>Industria</a> </div>
                                         </div>
                                         <div class="tj-nav-post__grid"> <a href="index.html"><i class="tji-window"></i></a> </div>
                                         <div class="tj-nav__post next">
@@ -344,7 +344,7 @@
                                         <ul>
                                             <li><a href="area-construcao.html">Construção Civil</a></li>
                                             <li><a href="area-imobiliario.html">Imobiliário</a></li>
-                                            <li><a href="area-Industrial.html">Industria</a></li>
+                                            <li><a href="area-industrial.html">Industria</a></li>
                                             <li><a class="active" href="area-agricultura.html">Agricultura & Pescas</a></li>
                                             <li><a href="area-investimentos.html">Novos Investimentos</a></li>
                                         </ul>
@@ -397,7 +397,7 @@
                                     <ul>
                                         <li><a href="area-construcao.html">Construção Civil</a></li>
                                         <li><a href="area-imobiliario.html">Imobiliário</a></li>
-                                        <li><a href="area-Industrial.html">Industria</a></li>
+                                        <li><a href="area-industrial.html">Industria</a></li>
                                         <li><a href="area-agricultura.html">Agricultura & Pesca</a></li>
                                     </ul>
                                 </div>
