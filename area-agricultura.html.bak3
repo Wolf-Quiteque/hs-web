@@ -243,7 +243,7 @@
                                         <p class="wow fadeInUp" data-wow-delay=".2s"> A H&S investe activamente no sector primário, desenvolvendo projectos estruturados em agricultura e pescas, orientados para a autossuficiência alimentar, a subsistência das comunidades e o crescimento económico
                                             de Angola.</p>
 
-                                    <div class="blog-images wow fadeInUp capesca-hover" data-wow-delay=".1s"> <a href="agricultura/projeto-capesca.html"> <img src="images/agricultura/pesca.webp" alt="Agricultura H&S"></a> </div>
+                                    <div class="blog-images wow fadeInUp" data-wow-delay=".1s"> <a href="agricultura/projeto-capesca.html"> <img src="images/agricultura/pesca.webp" alt="Agricultura H&S"></a> </div>
 
                                         <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s"><a href="agricultura/projeto-capesca.html">Projecto Capesca</a></h3>
                                         <p class="wow fadeInUp" data-wow-delay=".3s"> A H&S está a desenvolver um projecto privado de pescas em grande escala, cobrindo toda a cadeia de valor — desde a pesca e maricultura até ao armazenamento, processamento e exportação de produtos do mar. </p>
@@ -261,12 +261,12 @@
                                                     <div class="col-sm-6">
                                                         <div class="image-box wow fadeInUp" data-wow-delay=".2s">
                                                             <a href="agricultura/projeto-capesca.html">
-                                                                <img src="images/agricultura/land001.webp" alt="projecto de Pescas">
+                                                                <img src="images/agricultura/pesca.webp" alt="projecto de Pescas">
                                                             </a>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <div class="image-box wow fadeInUp" data-wow-delay=".3s"> <img src="images/agricultura/land02.webp" alt="projecto de Pescas"> </div>
+                                                        <div class="image-box wow fadeInUp" data-wow-delay=".3s"> <img src="images/agricultura/pesca1.webp" alt="projecto de Pescas"> </div>
                                                     </div>
                                                 </div>
                                             </div>

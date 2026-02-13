@@ -15043,30 +15043,6 @@ START: Blog Details CSS
   border-radius: 12px;
   overflow: hidden;
 }
-/* Capesca hover overlay */
-.post-details-wrapper .blog-images.capesca-hover {
-  position: relative;
-}
-.post-details-wrapper .blog-images.capesca-hover::after {
-  content: "Projecto Capesca";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(6, 61, 38, 0.88);
-  color: #fff;
-  font-size: clamp(26px, 3.2vw, 46px);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  opacity: 0;
-  transition: opacity 200ms ease;
-  pointer-events: none;
-}
-.post-details-wrapper .blog-images.capesca-hover:hover::after {
-  opacity: 1;
-}
 .post-details-wrapper .title {
   line-height: 1.1;
   margin-bottom: 22px;
