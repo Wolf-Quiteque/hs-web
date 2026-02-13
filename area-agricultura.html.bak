@@ -243,6 +243,40 @@
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".2s"> A H&S investe activamente no sector primário, desenvolvendo projectos estruturados em agricultura e pescas, orientados para a autossuficiência alimentar, a subsistência das comunidades e o crescimento económico
                                             de Angola.</p>
+                                        <h3 id="viveiro" class="mt-4 wow fadeInUp" data-wow-delay=".2s">Viveiro e Paisagismo</h3>
+                                        <p class="wow fadeInUp" data-wow-delay=".3s"> Com viveiros localizados na Camama (5 hectares) e na Quenguela (30 hectares), fornecemos plantas, espécies ornamentais e soluções completas de paisagismo para projectos de grande dimensão, incluindo: </p>
+                                        <ul class="wow fadeInUp"
+                                        data-wow-delay=".3s">
+                                            <li><span><i class="tji-check"></i></span>Jardinagem da Vila Kuditemo</li>
+                                            <li><span><i class="tji-check"></i></span>Sede da EPAL - Talatona</li>
+                                            <li><span><i class="tji-check"></i></span>Viana Park</li>
+                                            <li><span><i class="tji-check"></i></span>Igreja Simão Toco</li>
+                                            <li><span><i class="tji-check"></i></span>Acácias de Camama</li>
+                                        </ul>
+                                        <!-- Gallery -->
+                                        <div class="images-wrap mt-4">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="image-box wow fadeInUp" data-wow-delay=".2s"> <img src="images/agricultura/SF_HowDoGreenhousesWork_Hero.webp" alt="Viveiro e Paisagismo"> </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="image-box wow fadeInUp" data-wow-delay=".3s"> <img src="images/agricultura/palmeiraqqqq.webp" alt="Viveiro e Paisagismo"> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3 id="fazenda" class="mt-5 wow fadeInUp" data-wow-delay=".2s">Fazenda</h3>
+                                        <p class="wow fadeInUp" data-wow-delay=".3s"> Localizada entre a Camama e o Caxito, a nossa fazenda constitui um polo de produção agrícola e de criação de gado, contribuindo para o desenvolvimento rural, a segurança alimentar e o abastecimento do mercado nacional.
+                                            </p>
+                                        <div class="images-wrap mt-4">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="image-box wow fadeInUp" data-wow-delay=".2s"> <img src="images/agricultura/passagem01.webp" alt="Viveiro e Paisagismo"> </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="image-box wow fadeInUp" data-wow-delay=".3s"> <img src="images/agricultura/pass2.webp" alt="Viveiro e Paisagismo"> </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <h3 class="mt-5 wow fadeInUp" data-wow-delay=".2s"><a href="agricultura/projeto-capesca.html">Projecto Capesca</a></h3>
                                         <p class="wow fadeInUp" data-wow-delay=".3s"> A H&S está a desenvolver um projecto privado de pescas em grande escala, cobrindo toda a cadeia de valor — desde a pesca e maricultura até ao armazenamento, processamento e exportação de produtos do mar. </p>
                                         <h5
@@ -289,40 +323,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        <h3 id="viveiro" class="mt-4 wow fadeInUp" data-wow-delay=".2s">Viveiro e Paisagismo</h3>
-                                        <p class="wow fadeInUp" data-wow-delay=".3s"> Com viveiros localizados na Camama (5 hectares) e na Quenguela (30 hectares), fornecemos plantas, espécies ornamentais e soluções completas de paisagismo para projectos de grande dimensão, incluindo: </p>
-                                        <ul class="wow fadeInUp"
-                                        data-wow-delay=".3s">
-                                            <li><span><i class="tji-check"></i></span>Jardinagem da Vila Kuditemo</li>
-                                            <li><span><i class="tji-check"></i></span>Sede da EPAL - Talatona</li>
-                                            <li><span><i class="tji-check"></i></span>Viana Park</li>
-                                            <li><span><i class="tji-check"></i></span>Igreja Simão Toco</li>
-                                            <li><span><i class="tji-check"></i></span>Acácias de Camama</li>
-                                        </ul>
-                                        <!-- Gallery -->
-                                        <div class="images-wrap mt-4">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="image-box wow fadeInUp" data-wow-delay=".2s"> <img src="images/agricultura/SF_HowDoGreenhousesWork_Hero.webp" alt="Viveiro e Paisagismo"> </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="image-box wow fadeInUp" data-wow-delay=".3s"> <img src="images/agricultura/palmeiraqqqq.webp" alt="Viveiro e Paisagismo"> </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <h3 id="fazenda" class="mt-5 wow fadeInUp" data-wow-delay=".2s">Fazenda</h3>
-                                        <p class="wow fadeInUp" data-wow-delay=".3s"> Localizada entre a Camama e o Caxito, a nossa fazenda constitui um polo de produção agrícola e de criação de gado, contribuindo para o desenvolvimento rural, a segurança alimentar e o abastecimento do mercado nacional.
-                                            </p>
-                                        <div class="images-wrap mt-4">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="image-box wow fadeInUp" data-wow-delay=".2s"> <img src="images/agricultura/passagem01.webp" alt="Viveiro e Paisagismo"> </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="image-box wow fadeInUp" data-wow-delay=".3s"> <img src="images/agricultura/pass2.webp" alt="Viveiro e Paisagismo"> </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <!-- Navigation -->
                                     <div class="tj-post__navigation mb-0 wow fadeInUp" data-wow-delay=".2s">
