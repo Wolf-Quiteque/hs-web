@@ -79,6 +79,97 @@
     </div> <!-- container -->
     </div> <!-- adminContent -->
 
+    <!-- ══ Visual Editor Section ══════════════════════════════ -->
+    <div id="editorContent" style="display:none;">
+      <div class="container mt-4">
+        <div class="card border-warning">
+          <div class="card-header bg-warning bg-opacity-25 d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Editor Visual de Conteúdo</h5>
+            <span id="editModeIndicator" class="badge bg-secondary">Modo edição: inactivo</span>
+          </div>
+          <div class="card-body">
+            <p class="text-muted mb-3">Entre no modo de edição para editar texto e imagens directamente nas páginas do site. As alterações são guardadas na base de dados e sobrepõem o conteúdo predefinido.</p>
+            <div class="row g-3 align-items-end">
+              <div class="col-md-5">
+                <label class="form-label fw-semibold">Chave de Admin (x-admin-key)</label>
+                <input type="password" id="editorAdminKey" class="form-control" placeholder="Chave da API">
+                <div class="form-text">A mesma chave usada para gerir notícias.</div>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fw-semibold">Página inicial</label>
+                <select id="editorStartPage" class="form-select">
+                  <optgroup label="Português">
+                    <option value="index.html">Início</option>
+                    <option value="sobrenos.html">Sobre Nós</option>
+                    <option value="area-agricultura.html">Agricultura &amp; Pesca</option>
+                    <option value="area-construcao.html">Construção Civil</option>
+                    <option value="area-imobiliario.html">Imobiliário</option>
+                    <option value="area-industrial.html">Industrial</option>
+                    <option value="area-investimentos.html">Investimentos</option>
+                    <option value="area-logistica.html">Logística</option>
+                    <option value="area-projetos-fiscalizacao.html">Projetos &amp; Fiscalização</option>
+                    <option value="carreiras.html">Carreiras</option>
+                    <option value="contacto.html">Contacto</option>
+                    <option value="noticias.html">Notícias</option>
+                    <option value="responsiblidade.html">Responsabilidade</option>
+                    <option value="agricultura/fazenda.html">Fazenda</option>
+                    <option value="agricultura/projeto-capesca.html">Projeto CAPESCA</option>
+                    <option value="imobiliario/austin-residencial.html">Austin Residencial</option>
+                    <option value="imobiliario/jardim-de-rosas.html">Jardim de Rosas</option>
+                    <option value="imobiliario/vila-kuditemo.html">Vila Kuditemo</option>
+                    <option value="imobiliario/orlando-residencial.html">Orlando Residencial</option>
+                    <option value="imobiliario/shopping-popular.html">Shopping Popular</option>
+                    <option value="investimentos/camama-park.html">Camama Park</option>
+                    <option value="investimentos/cta-centro-tecnologico-automovel.html">CTA</option>
+                    <option value="investimentos/jardins-de-belas.html">Jardins de Belas</option>
+                    <option value="investimentos/nova-cidade-industrial-ib.html">Nova Cidade Industrial</option>
+                    <option value="investimentos/residencial-cidade-universitaria.html">Residencial Univ.</option>
+                  </optgroup>
+                  <optgroup label="English">
+                    <option value="en/index.html">Home (EN)</option>
+                    <option value="en/sobrenos.html">About Us (EN)</option>
+                    <option value="en/area-construcao.html">Construction (EN)</option>
+                    <option value="en/area-imobiliario.html">Real Estate (EN)</option>
+                    <option value="en/area-industrial.html">Industrial (EN)</option>
+                    <option value="en/area-investimentos.html">Investments (EN)</option>
+                    <option value="en/area-agricultura.html">Agriculture (EN)</option>
+                    <option value="en/area-logistica.html">Logistics (EN)</option>
+                    <option value="en/area-projetos-fiscalizacao.html">Projects (EN)</option>
+                    <option value="en/carreiras.html">Careers (EN)</option>
+                    <option value="en/contacto.html">Contact (EN)</option>
+                    <option value="en/noticias.html">News (EN)</option>
+                    <option value="en/responsiblidade.html">Responsibility (EN)</option>
+                  </optgroup>
+                  <optgroup label="中文">
+                    <option value="zh/index.html">首页 (ZH)</option>
+                    <option value="zh/sobrenos.html">关于我们 (ZH)</option>
+                    <option value="zh/area-construcao.html">建筑 (ZH)</option>
+                    <option value="zh/area-imobiliario.html">房地产 (ZH)</option>
+                    <option value="zh/area-industrial.html">工业 (ZH)</option>
+                    <option value="zh/area-investimentos.html">投资 (ZH)</option>
+                    <option value="zh/area-agricultura.html">农业 (ZH)</option>
+                    <option value="zh/area-logistica.html">物流 (ZH)</option>
+                    <option value="zh/area-projetos-fiscalizacao.html">项目 (ZH)</option>
+                    <option value="zh/carreiras.html">职业 (ZH)</option>
+                    <option value="zh/contacto.html">联系 (ZH)</option>
+                    <option value="zh/noticias.html">新闻 (ZH)</option>
+                    <option value="zh/responsiblidade.html">责任 (ZH)</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <button id="btnEnterEdit" class="btn btn-warning w-100 fw-semibold">
+                  Entrar em Modo Edição
+                </button>
+              </div>
+            </div>
+            <div id="editModeStatus" class="mt-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ══ End Visual Editor Section ══════════════════════════ -->
+
     <!-- Modal -->
     <div class="modal fade" id="newsModal" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -475,6 +566,8 @@
           if (pass === passcodeCorrect) {
             authModal.hide();
             document.getElementById('adminContent').style.display = 'block';
+            document.getElementById('editorContent').style.display = 'block';
+            initEditorPanel();
           } else {
             alert('Palavra-passe incorreta!');
           }
@@ -489,6 +582,53 @@
         // Hide manual upload button (now auto in save)
         document.getElementById("btnUpload")?.classList.add("d-none");
       });
+
+      // ── Visual editor panel ──────────────────────────────────
+      function initEditorPanel() {
+        const indicator  = document.getElementById('editModeIndicator');
+        const statusEl   = document.getElementById('editModeStatus');
+        const keyInput   = document.getElementById('editorAdminKey');
+
+        // Show current state on load
+        function refreshIndicator() {
+          if (sessionStorage.getItem('hsEditMode') === 'true') {
+            indicator.textContent = 'Modo edição: activo';
+            indicator.className = 'badge bg-warning text-dark';
+            statusEl.innerHTML =
+              '<div class="alert alert-warning d-flex align-items-center gap-3 py-2">' +
+              '<span>Modo edição está activo nesta sessão.</span>' +
+              '<button class="btn btn-sm btn-outline-danger ms-auto" id="btnExitEdit">Desactivar</button>' +
+              '</div>';
+            document.getElementById('btnExitEdit')?.addEventListener('click', () => {
+              sessionStorage.removeItem('hsEditMode');
+              sessionStorage.removeItem('hsAdminKey');
+              refreshIndicator();
+            });
+          } else {
+            indicator.textContent = 'Modo edição: inactivo';
+            indicator.className = 'badge bg-secondary';
+            statusEl.innerHTML = '';
+          }
+        }
+
+        // Pre-fill key input with the same ADMIN_KEY used for news management
+        // so the user doesn't have to type it separately
+        if (!keyInput.value) {
+          keyInput.value = ADMIN_KEY;
+        }
+
+        refreshIndicator();
+
+        document.getElementById('btnEnterEdit').addEventListener('click', () => {
+          const key = keyInput.value.trim();
+          if (!key) { alert('Insira a chave de admin (x-admin-key).'); return; }
+          const startPage = document.getElementById('editorStartPage').value;
+          sessionStorage.setItem('hsEditMode', 'true');
+          sessionStorage.setItem('hsAdminKey', key);
+          refreshIndicator();
+          window.open(startPage, '_blank');
+        });
+      }
 
       // init
       list();
