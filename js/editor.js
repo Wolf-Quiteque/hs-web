@@ -18,7 +18,7 @@
   var pageKey    = window.location.pathname;
 
   var textElements  = []; // [{el, key, defaultHtml}]
-  var imageElements = []; // [{el, key, defaultSrc}]
+  var imageElements = []; // [{el, key, kind, defaultSrc}]
 
   var activeTextItem = null;
   var activeImgItem  = null;
@@ -105,7 +105,15 @@
     '.swiper-slide .project-img img',
     '.swiper-slide .h6-project-item img',
     // Slideshow / hero image
-    '#slideshow-image'
+    '#slideshow-image',
+    // Keep the catch-all last so existing element keys remain stable.
+    'img'
+  ];
+
+  var BACKGROUND_IMAGE_SELECTORS = [
+    '[data-bg-image]',
+    '[data-bg-src]',
+    '[style*="background-image"]'
   ];
 
   // ── Discover editable elements ───────────────────────────────
@@ -129,7 +137,20 @@
       els.forEach(function (el) {
         if (seenImg.indexOf(el) !== -1) return;
         seenImg.push(el);
-        imageElements.push({ el: el, key: 'img-' + iIdx++, defaultSrc: el.src });
+        imageElements.push({ el: el, key: 'img-' + iIdx++, kind: 'image', defaultSrc: el.src });
+      });
+    });
+
+    // Background images do not have an <img> node, but are still visual
+    // content users expect to be able to replace in the live editor.
+    BACKGROUND_IMAGE_SELECTORS.forEach(function (sel) {
+      var els = document.querySelectorAll(sel);
+      els.forEach(function (el) {
+        if (seenImg.indexOf(el) !== -1) return;
+        var defaultValue = getImageValue({ el: el, kind: 'background' });
+        if (!defaultValue) return;
+        seenImg.push(el);
+        imageElements.push({ el: el, key: 'img-' + iIdx++, kind: 'background', defaultSrc: defaultValue });
       });
     });
   }
@@ -157,7 +178,7 @@
 
         imageElements.forEach(function (item) {
           if (map[item.key]) {
-            item.el.src = map[item.key].value;
+            setImageValue(item, map[item.key].value);
             if (isEditMode) item.el.classList.add('hs-has-override');
           }
         });
@@ -460,7 +481,7 @@
     activeImgItem = item;
     pendingImgDataUrl  = null;
     pendingImgFilename = null;
-    document.getElementById('hs-img-preview').src = item.el.src;
+    document.getElementById('hs-img-preview').src = getImageValue(item);
     document.getElementById('hs-img-file').value = '';
     document.getElementById('hs-img-status').textContent = '';
     openOverlay('hs-img-modal');
@@ -524,7 +545,7 @@
       });
     })
     .then(function (url) {
-      activeImgItem.el.src = url;
+      setImageValue(activeImgItem, url);
       activeImgItem.el.classList.add('hs-has-override');
       closeOverlay();
     })
@@ -547,7 +568,7 @@
       body: JSON.stringify({ pageKey: pageKey, elementKey: activeImgItem.key })
     })
     .then(function () {
-      activeImgItem.el.src = activeImgItem.defaultSrc;
+      setImageValue(activeImgItem, activeImgItem.defaultSrc);
       activeImgItem.el.classList.remove('hs-has-override');
       closeOverlay();
     })
@@ -567,6 +588,26 @@
     if (!btn) return;
     btn.disabled = disabled;
     btn.textContent = text;
+  }
+
+  function getImageValue(item) {
+    if (item.kind === 'background') {
+      var declared = item.el.getAttribute('data-bg-image') || item.el.getAttribute('data-bg-src');
+      if (declared) return declared;
+      var match = String(item.el.style.backgroundImage || '').match(/url\(["']?(.*?)["']?\)/i);
+      return match ? match[1] : '';
+    }
+    return item.el.currentSrc || item.el.src || '';
+  }
+
+  function setImageValue(item, value) {
+    if (item.kind === 'background') {
+      item.el.style.backgroundImage = 'url("' + String(value).replace(/"/g, '\\"') + '")';
+      if (item.el.hasAttribute('data-bg-image')) item.el.setAttribute('data-bg-image', value);
+      if (item.el.hasAttribute('data-bg-src')) item.el.setAttribute('data-bg-src', value);
+      return;
+    }
+    item.el.src = value;
   }
 
   /**
